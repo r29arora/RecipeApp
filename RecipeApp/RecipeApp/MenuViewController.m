@@ -34,7 +34,6 @@
     {
         cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textColor = [UIColor clearColor];
         switch (indexPath.row) {
             case MenuTableViewTypeNewRecipe:
                 cell.titleLabel.text = @"New Recipe";

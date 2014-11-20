@@ -25,12 +25,12 @@
         
         //Setup Visible Menu Bar View
         self.menuBar = [[UIView alloc] initWithFrame:CGRectMake(0, 18.0f, self.containerView.frame.size.width, self.containerView.frame.size.height-18.0f)];
-        self.menuBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.menuBar.backgroundColor = [UIColor whiteColor];
         [self.containerView addSubview:self.menuBar];
         
         //Setup Menu button
         self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
-        self.centerButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.centerButton.backgroundColor = [UIColor whiteColor];
         [self.containerView addSubview:self.centerButton];
         
         //Setup Arrow Icon
@@ -40,9 +40,26 @@
         arrowImage.contentMode = UIViewContentModeScaleAspectFill;
         [self.centerButton addSubview:arrowImage];
         
-        //Add Tap Gesture Recognizer to Center Button
+        //Add Tap and Swipe Gesture Recognizer to Center Button and menu bar
         UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMenu:)];
+        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMenu:)];
+        UISwipeGestureRecognizer *swipeDownGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeDown:)];
+        swipeDownGestureRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+        
+        [self.centerButton addGestureRecognizer:swipeGestureRecognizer];
         [self.centerButton addGestureRecognizer:tapGestureRecognizer];
+        [self.centerButton addGestureRecognizer:swipeDownGestureRecognizer];
+        
+        UIGestureRecognizer *tapMenuGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMenu:)];
+        UISwipeGestureRecognizer *swipeMenuUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMenu:)];
+        swipeMenuUpGestureRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+        UISwipeGestureRecognizer *swipeMenuDownGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeDown:)];
+        swipeMenuDownGestureRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+        
+        [self.menuBar addGestureRecognizer:tapMenuGestureRecognizer];
+        [self.menuBar addGestureRecognizer:swipeMenuUpGestureRecognizer];
+        [self.menuBar addGestureRecognizer:swipeMenuDownGestureRecognizer];
     }
     return self;
 }
@@ -70,6 +87,17 @@
     {
         [self.delegate menuBarViewDidTapOpenMenuWithCompletion:^{
             self.isMenuOpen = YES;
+        }];
+    }
+}
+
+- (void)didSwipeDown:(id)selector
+{
+    if (self.isMenuOpen)
+    {
+        [self rotateCenterButton];
+        [self.delegate menuBarViewDidTapCloseMenuWithCompletion:^{
+            self.isMenuOpen = NO;
         }];
     }
 }
