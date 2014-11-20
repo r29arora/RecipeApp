@@ -51,6 +51,7 @@
     [self addChildViewController:self.centerViewController];
     [self.view addSubview:self.centerViewController.view];
     [self.centerViewController didMoveToParentViewController:self];
+    
     [self setupMenuBar];
 }
 
@@ -92,14 +93,10 @@
         return;
     }
     
-    self.centerViewController.view.userInteractionEnabled = NO;
-    
-    CGRect frame = CGRectMake(0, -1.0f*self.bottomViewController.view.frame.size.height , SCREEN_WIDTH, SCREEN_HEIGHT);
     CGRect frame2 = CGRectMake(0, SCREEN_HEIGHT - self.bottomViewController.view.frame.size.height, self.bottomViewController.view.frame.size.width, self.bottomViewController.view.frame.size.height);
     CGRect frameMenu = CGRectMake(0, SCREEN_HEIGHT - self.bottomViewController.view.frame.size.height - self.menuBarView.frame.size.height, self.menuBarView.frame.size.width, self.menuBarView.frame.size.height);
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.centerViewController.view.frame = frame;
         self.bottomViewController.view.frame = frame2;
         self.menuBarView.frame = frameMenu;
         self.isShowingBottomViewController = YES;
@@ -160,7 +157,10 @@
         return;
     }
     [self moveCenterViewControllerToOriginalPosition];
-    completion();
+    if (completion)
+    {
+        completion();
+    }
 }
 
 #pragma mark - Rotation
