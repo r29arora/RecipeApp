@@ -63,7 +63,7 @@
     self.mainViewController = [[RecipeViewController alloc] init];
     self.menuViewController = [[MenuViewController alloc] init];
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 150.0f);
+    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 100.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
     [self.bottomMenuController setupCenterView];
     

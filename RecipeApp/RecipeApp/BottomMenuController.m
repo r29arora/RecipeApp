@@ -9,6 +9,8 @@
 #import "BottomMenuController.h"
 #import "MenuBarView.h"
 #import "MenuViewController.h"
+#import "CreateRecipeViewController.h"
+#import "RecipeViewController.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
@@ -54,6 +56,42 @@
     [self.centerViewController didMoveToParentViewController:self];
     
     [self setupMenuBar];
+}
+
+- (void)setNewCenterViewController:(UIViewController *)centerViewController WithCompletion:(void (^)())completion
+{
+    if (self.centerViewController == centerViewController)
+    {
+        if (completion)
+        {
+            completion();
+        }
+        return;
+    }
+    //Close Menu if open
+    if (self.isShowingBottomViewController)
+    {
+        [self menuBarViewDidTapCloseMenuWithCompletion:^{
+            self.menuBarView.isMenuOpen = NO;
+            self.isShowingBottomViewController = NO;
+            
+            //Set New Center View Controller
+            if (self.centerViewController)
+            {
+                [self.centerViewController removeFromParentViewController];
+                [self.centerViewController.view removeFromSuperview];
+            }
+            self.centerViewController = centerViewController;
+            
+            [self setupCenterView];
+            
+        }];
+    }
+    
+    if (completion)
+    {
+        completion();
+    }
 }
 
 - (void)setupBottomView
@@ -108,7 +146,7 @@
     }];
 }
 
-- (void)moveCenterViewControllerToOriginalPosition
+- (void)moveCenterViewControllerToOriginalPositionWithCompletion:(void (^) ())completion
 {
     if (!self.isShowingBottomViewController)
     {
@@ -124,12 +162,19 @@
     }completion:^(BOOL finished) {
         
         self.isShowingBottomViewController = NO;
+        self.menuBarView.isMenuOpen = NO;
         [self.bottomViewController removeFromParentViewController];
         [self.bottomViewController.view removeFromSuperview];
         if ([self respondsToSelector:@selector(bottomMenucontrollerDidCloseMenu)])
         {
             [self.delegate bottomMenucontrollerDidCloseMenu];
         }
+        
+        if (completion)
+        {
+            completion();
+        }
+        
     }];
 }
 
@@ -157,18 +202,41 @@
     {
         return;
     }
-    [self moveCenterViewControllerToOriginalPosition];
-    if (completion)
-    {
-        completion();
-    }
+    
+    [self moveCenterViewControllerToOriginalPositionWithCompletion:^{
+        if (completion)
+        {
+            completion();
+        }
+    }];
 }
 
 #pragma mark - MenuViewControllerDelegate
 
 - (void)menuViewController:(MenuViewController *)menuViewController didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Index Path: %d", (int)indexPath.row);
+    if (indexPath.row == MenuTableViewTypeNewRecipe && ![self.centerViewController isKindOfClass:[CreateRecipeViewController class]])
+    {
+
+        CreateRecipeViewController *createRecipeViewController = [[CreateRecipeViewController alloc] init];
+        createRecipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self setNewCenterViewController:createRecipeViewController WithCompletion:nil];
+        return;
+    }
+    else if (indexPath.row == MenuTableViewTypeMyRecipes && ![self.centerViewController isKindOfClass:[RecipeViewController class]])
+    {
+        RecipeViewController *recipeViewController = [[RecipeViewController alloc] init];
+        recipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        [self setNewCenterViewController:recipeViewController WithCompletion:nil];
+        return;
+    }
+    else
+    {
+        [self moveCenterViewControllerToOriginalPositionWithCompletion:^{
+            self.isShowingBottomViewController = NO;
+            self.menuBarView.isMenuOpen = NO;
+        }];
+    }
 }
 
 #pragma mark - Rotation

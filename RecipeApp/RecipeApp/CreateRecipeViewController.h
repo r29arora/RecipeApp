@@ -1,5 +1,5 @@
 //
-//  RecipeViewController.h
+//  CreateRecipeViewController.h
 //  RecipeApp
 //
 //  Created by Rajul Arora on 2014-11-20.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecipeViewController : UIViewController
-
-@property (nonatomic, strong) UICollectionView *recipeList;
+@interface CreateRecipeViewController : UIViewController
 
 @end

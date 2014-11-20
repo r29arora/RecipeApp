@@ -29,8 +29,8 @@
 
 - (void)layoutSubviews
 {
-    self.sideImage.frame = CGRectMake(20, (self.frame.size.height)/2.0f, 20, 20);
-    self.titleLabel.frame = CGRectMake(CGRectGetMaxX(self.sideImage.frame) + 10, 10, self.frame.size.width - self.sideImage.frame.size.width, self.frame.size.height);
+    self.sideImage.frame = CGRectMake(20, (self.frame.size.height)/2.0f - 10, 20, 20);
+    self.titleLabel.frame = CGRectMake(CGRectGetMaxX(self.sideImage.frame) + 10, 0, self.frame.size.width - self.sideImage.frame.size.width, self.frame.size.height);
 }
 
 @end

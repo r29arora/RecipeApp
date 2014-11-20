@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    MenuTableViewTypeNewRecipe = 0,
+    MenuTableViewTypeMyRecipes,
+}MenuTableViewType;
+
 @class MenuViewController;
 
 @protocol MenuViewControllerDelegate <NSObject>

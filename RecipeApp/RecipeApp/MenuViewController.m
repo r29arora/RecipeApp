@@ -9,14 +9,6 @@
 #import "MenuViewController.h"
 #import "MenuTableViewCell.h"
 
-typedef enum {
-    MenuTableViewTypeNewRecipe = 0,
-    MenuTableViewTypeTwo,
-    MenuTableViewTypeThree,
-    MenuTableViewTypeFour,
-    MenuTableViewTypeFive
-}MenuTableViewType;
-
 @interface MenuViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -28,7 +20,7 @@ typedef enum {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     self.listView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    self.listView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
+    self.listView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4f];
     self.listView.delegate = self;
     self.listView.dataSource = self;
     self.listView.bounces = NO;
@@ -41,23 +33,16 @@ typedef enum {
     if (!cell)
     {
         cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.textColor = [UIColor clearColor];
         switch (indexPath.row) {
             case MenuTableViewTypeNewRecipe:
                 cell.titleLabel.text = @"New Recipe";
                 cell.sideImage.image = [UIImage imageNamed:@"add"];
                 break;
-            case MenuTableViewTypeTwo:
-                cell.textLabel.text = @"two";
-                break;
-            case MenuTableViewTypeThree:
-                cell.textLabel.text = @"three";
-                break;
-            case MenuTableViewTypeFour:
-                cell.textLabel.text = @"four";
-                break;
-            case MenuTableViewTypeFive:
-                cell.textLabel.text = @"five";
+            case MenuTableViewTypeMyRecipes:
+                cell.titleLabel.text = @"My Recipes";
+                cell.sideImage.image = [UIImage imageNamed:@"my_recipes"];
                 break;
         }
     }
@@ -71,12 +56,12 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.view.frame.size.height/4.0f;
+    return self.view.frame.size.height/2.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 2;
 }
 
 @end
