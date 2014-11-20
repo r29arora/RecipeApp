@@ -21,8 +21,14 @@
         
         self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, self.frame.size.height)];
         self.centerButton.backgroundColor = [UIColor whiteColor];
-        self.centerButton.layer.cornerRadius = 4.0f;
         [self addSubview:self.centerButton];
+        
+        UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down"]];
+        arrowImage.frame = self.centerButton.frame;
+        arrowImage.center = self.centerButton.center;
+        arrowImage.contentMode = UIViewContentModeScaleAspectFill;
+        [self.centerButton addSubview:arrowImage];
+        
         UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMenu:)];
         [self.centerButton addGestureRecognizer:tapGestureRecognizer];
         
@@ -57,6 +63,9 @@
 {
     CGFloat centerX = (self.frame.size.width - self.centerButton.frame.size.width)/2.0f;
     self.centerButton.frame = CGRectMake(centerX, 0, 80.0f, self.frame.size.height);
+    self.centerButton.layer.cornerRadius = self.centerButton.frame.size.width/2.0f;
+
+
 }
 
 @end

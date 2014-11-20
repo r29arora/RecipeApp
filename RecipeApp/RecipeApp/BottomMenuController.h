@@ -12,7 +12,9 @@
 
 @protocol BottomMenuControllerDelegate
 
+@optional
 - (void)bottomMenuControllerDidOpenMenu;
+- (void)bottomMenucontrollerDidCloseMenu;
 - (void)bottomMenuControllerWillTransition;
 
 @end

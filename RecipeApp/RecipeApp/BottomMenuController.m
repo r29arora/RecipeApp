@@ -34,6 +34,7 @@
     if (self = [self initWithCenterViewController:centerViewController])
     {
         self.bottomViewController = bottomViewController;
+        self.delegate = (id<BottomMenuControllerDelegate>) self.centerViewController;
     }
     return self;
 }
@@ -80,12 +81,18 @@
 
 - (void)moveCenterViewControllerToTop
 {
-    [self.delegate bottomMenuControllerWillTransition];
+    if ([self respondsToSelector:@selector(bottomMenuControllerWillTransition)])
+    {
+        [self.delegate bottomMenuControllerWillTransition];
+
+    }
     
     if (!self.centerViewController || !self.bottomViewController)
     {
         return;
     }
+    
+    self.centerViewController.view.userInteractionEnabled = NO;
     
     CGRect frame = CGRectMake(0, -1.0f*self.bottomViewController.view.frame.size.height , SCREEN_WIDTH, SCREEN_HEIGHT);
     CGRect frame2 = CGRectMake(0, SCREEN_HEIGHT - self.bottomViewController.view.frame.size.height, self.bottomViewController.view.frame.size.width, self.bottomViewController.view.frame.size.height);
@@ -96,7 +103,10 @@
         self.bottomViewController.view.frame = frame2;
         self.menuBarView.frame = frameMenu;
         self.isShowingBottomViewController = YES;
-        [self.delegate bottomMenuControllerDidOpenMenu];
+        if ([self respondsToSelector:@selector(bottomMenuControllerDidOpenMenu)])
+        {
+            [self.delegate bottomMenuControllerDidOpenMenu];
+        }
     }];
 }
 
@@ -118,6 +128,10 @@
         self.isShowingBottomViewController = NO;
         [self.bottomViewController removeFromParentViewController];
         [self.bottomViewController.view removeFromSuperview];
+        if ([self respondsToSelector:@selector(bottomMenucontrollerDidCloseMenu)])
+        {
+            [self.delegate bottomMenucontrollerDidCloseMenu];
+        }
     }];
 }
 
@@ -147,6 +161,13 @@
     }
     [self moveCenterViewControllerToOriginalPosition];
     completion();
+}
+
+#pragma mark - Rotation
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
 }
 
 @end
