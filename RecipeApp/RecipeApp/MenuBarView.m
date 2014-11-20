@@ -41,7 +41,7 @@
     CGFloat radians = atan2f(self.centerButton.transform.b, self.centerButton.transform.a);
     CGFloat degrees = radians * (180 / M_PI);
     CGAffineTransform transform = CGAffineTransformMakeRotation((180 + degrees) * M_PI/180);
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         self.centerButton.transform = transform;
     }];
     
