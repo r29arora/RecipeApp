@@ -18,10 +18,17 @@
 {
     if (self = [super initWithFrame:frame])
     {
+        self.containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        self.containerView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.containerView];
         
-        self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, self.frame.size.height)];
-        self.centerButton.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.6];
-        [self addSubview:self.centerButton];
+        self.menuBar = [[UIView alloc] initWithFrame:CGRectMake(0, 18.0f, self.containerView.frame.size.width, self.containerView.frame.size.height-18.0f)];
+        self.menuBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self.containerView addSubview:self.menuBar];
+        
+        self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50.0f, self.frame.size.height)];
+        self.centerButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self.containerView addSubview:self.centerButton];
         
         UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down"]];
         arrowImage.frame = self.centerButton.frame;

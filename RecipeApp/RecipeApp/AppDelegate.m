@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BottomMenuController.h"
-#import "ViewController.h"
 #import "MenuViewController.h"
+#import "RecipeViewController.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
-@property (nonatomic, strong) ViewController *mainViewController;
+@property (nonatomic, strong) RecipeViewController *mainViewController;
 
 @end
 
@@ -27,7 +27,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupBottomMenuController];
     
     return YES;
@@ -60,13 +60,15 @@
 
 - (void)setupBottomMenuController
 {
-    NSString *className = NSStringFromClass([self.mainViewController class]);
-    self.mainViewController = [[ViewController alloc] initWithNibName:className bundle:nil];
+    self.mainViewController = [[RecipeViewController alloc] init];
     self.menuViewController = [[MenuViewController alloc] init];
-    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 250.0f);
+    self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 150.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
     [self.bottomMenuController setupCenterView];
+    
     self.window.rootViewController = self.bottomMenuController;
+    [self.window makeKeyAndVisible];
 }
 
 - (void)showMenu

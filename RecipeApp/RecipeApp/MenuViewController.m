@@ -7,9 +7,10 @@
 //
 
 #import "MenuViewController.h"
+#import "MenuTableViewCell.h"
 
 typedef enum {
-    MenuTableViewTypeOne = 0,
+    MenuTableViewTypeNewRecipe = 0,
     MenuTableViewTypeTwo,
     MenuTableViewTypeThree,
     MenuTableViewTypeFour,
@@ -25,9 +26,9 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
-    
+    self.view.backgroundColor = [UIColor clearColor];
     self.listView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    self.listView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
     self.listView.delegate = self;
     self.listView.dataSource = self;
     self.listView.bounces = NO;
@@ -36,15 +37,15 @@ typedef enum {
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        cell.backgroundColor = [UIColor darkGrayColor];
-        cell.tintColor = [UIColor whiteColor];
+        cell = [[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.textLabel.textColor = [UIColor clearColor];
         switch (indexPath.row) {
-            case MenuTableViewTypeOne:
-                cell.textLabel.text = @"one";
+            case MenuTableViewTypeNewRecipe:
+                cell.titleLabel.text = @"New Recipe";
+                cell.sideImage.image = [UIImage imageNamed:@"add"];
                 break;
             case MenuTableViewTypeTwo:
                 cell.textLabel.text = @"two";
@@ -59,9 +60,7 @@ typedef enum {
                 cell.textLabel.text = @"five";
                 break;
         }
-        
     }
-    
     return cell;
 }
 
@@ -72,12 +71,12 @@ typedef enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.view.frame.size.height/5.0f;
+    return self.view.frame.size.height/4.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 @end

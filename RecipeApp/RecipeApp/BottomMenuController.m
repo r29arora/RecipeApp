@@ -36,7 +36,6 @@
     {
         self.bottomViewController = bottomViewController;
         self.bottomViewController.delegate = self;
-        self.delegate = (id<BottomMenuControllerDelegate>) self.centerViewController;
     }
     return self;
 }
@@ -65,7 +64,7 @@
     }
     
     self.bottomViewController.view.frame = CGRectMake(0, SCREEN_HEIGHT, self.bottomViewController.view.frame.size.width, self.bottomViewController.view.frame.size.height);
-    
+    self.bottomViewController.view.backgroundColor = [UIColor clearColor];
     [self addChildViewController:self.bottomViewController];
     [self.view addSubview:self.bottomViewController.view];
     [self.bottomViewController didMoveToParentViewController:self];
@@ -74,7 +73,7 @@
 - (void)setupMenuBar
 {
     self.menuBarView = [[MenuBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50.0f, SCREEN_WIDTH, 50.0f)];
-    self.menuBarView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    self.menuBarView.backgroundColor = [UIColor clearColor];
     self.menuBarView.delegate = self;
     [self.view addSubview:self.menuBarView];
     [self.view bringSubviewToFront:self.menuBarView];

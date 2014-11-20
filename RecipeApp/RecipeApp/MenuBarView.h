@@ -17,6 +17,8 @@
 
 @interface MenuBarView : UIView
 
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) UIView *menuBar;
 @property (nonatomic, strong) UIView *centerButton;
 @property (nonatomic, strong) id <MenuBarViewDelegate> delegate;
 @property (nonatomic) BOOL isMenuOpen;

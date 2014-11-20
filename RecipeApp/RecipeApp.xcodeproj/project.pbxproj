@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9601A1E3580005626A5 /* MenuTableViewCell.m */; };
+		AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9661A1E4A37005626A5 /* RecipeViewController.m */; };
 		AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C01A1D5A2B005A92B1 /* main.m */; };
 		AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C31A1D5A2B005A92B1 /* AppDelegate.m */; };
-		AAEF76C71A1D5A2B005A92B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C61A1D5A2B005A92B1 /* ViewController.m */; };
-		AAEF76CA1A1D5A2B005A92B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAEF76C81A1D5A2B005A92B1 /* Main.storyboard */; };
 		AAEF76CC1A1D5A2B005A92B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF76CB1A1D5A2B005A92B1 /* Images.xcassets */; };
 		AAEF76CF1A1D5A2B005A92B1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAEF76CD1A1D5A2B005A92B1 /* LaunchScreen.xib */; };
 		AAEF76DB1A1D5A2C005A92B1 /* RecipeAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76DA1A1D5A2C005A92B1 /* RecipeAppTests.m */; };
@@ -30,14 +30,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA71E95F1A1E3580005626A5 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
+		AA71E9601A1E3580005626A5 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
+		AA71E9651A1E4A37005626A5 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
+		AA71E9661A1E4A37005626A5 /* RecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeViewController.m; sourceTree = "<group>"; };
 		AAEF76BB1A1D5A2B005A92B1 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF76BF1A1D5A2B005A92B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEF76C01A1D5A2B005A92B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AAEF76C21A1D5A2B005A92B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AAEF76C31A1D5A2B005A92B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AAEF76C51A1D5A2B005A92B1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AAEF76C61A1D5A2B005A92B1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AAEF76C91A1D5A2B005A92B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAEF76CB1A1D5A2B005A92B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AAEF76CE1A1D5A2B005A92B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AAEF76D41A1D5A2C005A92B1 /* RecipeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +70,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA71E9621A1E4978005626A5 /* MenuBarTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AA71E95F1A1E3580005626A5 /* MenuTableViewCell.h */,
+				AA71E9601A1E3580005626A5 /* MenuTableViewCell.m */,
+			);
+			name = MenuBarTableViewCell;
+			sourceTree = "<group>";
+		};
+		AA71E9631A1E4982005626A5 /* MenuBarView */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF76F11A1D81E2005A92B1 /* MenuBarView.h */,
+				AAEF76F21A1D81E2005A92B1 /* MenuBarView.m */,
+			);
+			name = MenuBarView;
+			sourceTree = "<group>";
+		};
+		AA71E9641A1E4995005626A5 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA71E9631A1E4982005626A5 /* MenuBarView */,
+				AA71E9621A1E4978005626A5 /* MenuBarTableViewCell */,
+			);
+			name = MenuBar;
+			sourceTree = "<group>";
+		};
 		AAEF76B21A1D5A2B005A92B1 = {
 			isa = PBXGroup;
 			children = (
@@ -131,11 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */,
-				AAEF76C81A1D5A2B005A92B1 /* Main.storyboard */,
-				AAEF76C51A1D5A2B005A92B1 /* ViewController.h */,
-				AAEF76C61A1D5A2B005A92B1 /* ViewController.m */,
 				AAEF76ED1A1D6FAB005A92B1 /* MenuViewController.h */,
 				AAEF76EE1A1D6FAB005A92B1 /* MenuViewController.m */,
+				AA71E9651A1E4A37005626A5 /* RecipeViewController.h */,
+				AA71E9661A1E4A37005626A5 /* RecipeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -152,8 +179,7 @@
 		AAEF76F01A1D81D5005A92B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AAEF76F11A1D81E2005A92B1 /* MenuBarView.h */,
-				AAEF76F21A1D81E2005A92B1 /* MenuBarView.m */,
+				AA71E9641A1E4995005626A5 /* MenuBar */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -238,7 +264,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF76CA1A1D5A2B005A92B1 /* Main.storyboard in Resources */,
 				AAEF76CF1A1D5A2B005A92B1 /* LaunchScreen.xib in Resources */,
 				AAEF76CC1A1D5A2B005A92B1 /* Images.xcassets in Resources */,
 			);
@@ -258,9 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF76C71A1D5A2B005A92B1 /* ViewController.m in Sources */,
+				AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */,
 				AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */,
 				AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */,
+				AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */,
 				AAEF76EB1A1D6061005A92B1 /* BottomMenuController.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
@@ -286,14 +312,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AAEF76C81A1D5A2B005A92B1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAEF76C91A1D5A2B005A92B1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AAEF76CD1A1D5A2B005A92B1 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -456,6 +474,7 @@
 				AAEF76E01A1D5A2C005A92B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAEF76E11A1D5A2C005A92B1 /* Build configuration list for PBXNativeTarget "RecipeAppTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +483,7 @@
 				AAEF76E31A1D5A2C005A92B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
