@@ -70,8 +70,8 @@
 
 - (void)setupMenuBar
 {
-    self.menuBarView = [[MenuBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 80.0f, SCREEN_WIDTH, 80.0f)];
-    self.menuBarView.backgroundColor = [UIColor blueColor];
+    self.menuBarView = [[MenuBarView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50.0f, SCREEN_WIDTH, 50.0f)];
+    self.menuBarView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
     self.menuBarView.delegate = self;
     [self.view addSubview:self.menuBarView];
     [self.view bringSubviewToFront:self.menuBarView];

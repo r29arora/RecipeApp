@@ -63,7 +63,7 @@
     NSString *className = NSStringFromClass([self.mainViewController class]);
     self.mainViewController = [[ViewController alloc] initWithNibName:className bundle:nil];
     self.menuViewController = [[MenuViewController alloc] init];
-    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 300.0f);
+    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 250.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
     [self.bottomMenuController setupCenterView];
     self.window.rootViewController = self.bottomMenuController;

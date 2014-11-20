@@ -19,8 +19,8 @@
     if (self = [super initWithFrame:frame])
     {
         
-        self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, self.frame.size.height)];
-        self.centerButton.backgroundColor = [UIColor whiteColor];
+        self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, self.frame.size.height)];
+        self.centerButton.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.6];
         [self addSubview:self.centerButton];
         
         UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down"]];
@@ -62,7 +62,7 @@
 - (void)layoutSubviews
 {
     CGFloat centerX = (self.frame.size.width - self.centerButton.frame.size.width)/2.0f;
-    self.centerButton.frame = CGRectMake(centerX, 0, 80.0f, self.frame.size.height);
+    self.centerButton.frame = CGRectMake(centerX, 0, 50.0f, self.frame.size.height);
     self.centerButton.layer.cornerRadius = self.centerButton.frame.size.width/2.0f;
 
 
