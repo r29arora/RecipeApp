@@ -13,7 +13,6 @@
 
 - (void)menuBarViewDidTapOpenMenuWithCompletion:(void(^)())completion;
 - (void)menuBarViewDidTapCloseMenuWithCompletion:(void(^)())completion;
-
 @end
 
 @interface MenuBarView : UIView
@@ -23,5 +22,7 @@
 @property (nonatomic) BOOL isMenuOpen;
 
 - (instancetype)initWithFrame:(CGRect)frame;
+
+- (void)didTapMenu:(id)selector;
 
 @end

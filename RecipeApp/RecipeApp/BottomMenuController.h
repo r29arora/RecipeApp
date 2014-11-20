@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MenuBarView;
+@class MenuViewController;
 
 @protocol BottomMenuControllerDelegate
 
@@ -26,7 +27,7 @@
 
 // Child View Controllers
 @property (nonatomic, retain) UIViewController *centerViewController;
-@property (nonatomic, retain) UIViewController *bottomViewController;
+@property (nonatomic, retain) MenuViewController *bottomViewController;
 
 // Menu Bar
 @property (nonatomic, strong) MenuBarView *menuBarView;

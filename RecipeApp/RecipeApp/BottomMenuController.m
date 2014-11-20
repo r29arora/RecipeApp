@@ -8,11 +8,12 @@
 
 #import "BottomMenuController.h"
 #import "MenuBarView.h"
+#import "MenuViewController.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
-@interface BottomMenuController () <MenuBarViewDelegate>
+@interface BottomMenuController () <MenuBarViewDelegate, MenuViewControllerDelegate>
 
 @end
 
@@ -29,11 +30,12 @@
     return self;
 }
 
-- (instancetype)initWithCenterViewController:(UIViewController *)centerViewController bottomViewController:(UIViewController *)bottomViewController
+- (instancetype)initWithCenterViewController:(UIViewController *)centerViewController bottomViewController:(MenuViewController *)bottomViewController
 {
     if (self = [self initWithCenterViewController:centerViewController])
     {
         self.bottomViewController = bottomViewController;
+        self.bottomViewController.delegate = self;
         self.delegate = (id<BottomMenuControllerDelegate>) self.centerViewController;
     }
     return self;
@@ -161,6 +163,13 @@
     {
         completion();
     }
+}
+
+#pragma mark - MenuViewControllerDelegate
+
+- (void)menuViewController:(MenuViewController *)menuViewController didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Index Path: %d", (int)indexPath.row);
 }
 
 #pragma mark - Rotation

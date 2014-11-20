@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class MenuViewController;
+
+@protocol MenuViewControllerDelegate <NSObject>
+
+- (void)menuViewController:(MenuViewController *)menuViewController didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface MenuViewController : UIViewController
 
 @property (nonatomic, strong) UITableView *listView;
+@property (nonatomic, strong) id<MenuViewControllerDelegate> delegate;
 
 @end
