@@ -15,7 +15,7 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
-@interface BottomMenuController () <MenuBarViewDelegate, MenuViewControllerDelegate>
+@interface BottomMenuController () <MenuBarViewDelegate>
 
 @end
 
@@ -37,7 +37,6 @@
     if (self = [self initWithCenterViewController:centerViewController])
     {
         self.bottomViewController = bottomViewController;
-        self.bottomViewController.delegate = self;
     }
     return self;
 }
@@ -74,18 +73,12 @@
         [self menuBarViewDidTapCloseMenuWithCompletion:^{
             self.menuBarView.isMenuOpen = NO;
             self.isShowingBottomViewController = NO;
-            
-            //Set New Center View Controller
-            if (self.centerViewController)
-            {
-                [self.centerViewController removeFromParentViewController];
-                [self.centerViewController.view removeFromSuperview];
-            }
-            self.centerViewController = centerViewController;
-            
-            [self setupCenterView];
-            
+            [self setCenterViewWithNewViewController:centerViewController];
         }];
+    }
+    else
+    {
+        [self setCenterViewWithNewViewController:centerViewController];
     }
     
     if (completion)
@@ -93,6 +86,18 @@
         
         completion();
     }
+}
+
+- (void)setCenterViewWithNewViewController:(UIViewController *)centerViewController
+{
+    if (self.centerViewController)
+    {
+        [self.centerViewController removeFromParentViewController];
+        [self.centerViewController.view removeFromSuperview];
+    }
+    self.centerViewController = centerViewController;
+    
+    [self setupCenterView];
 }
 
 - (void)setupBottomView
@@ -195,44 +200,12 @@
     {
         return;
     }
-    
-
-    
     [self moveCenterViewControllerToOriginalPositionWithCompletion:^{
         if (completion)
         {
             completion();
         }
     }];
-}
-
-#pragma mark - MenuViewControllerDelegate
-
-- (void)menuViewController:(MenuViewController *)menuViewController didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.delegate bottomMenuControllerWillTransition];
-    if (indexPath.row == MenuTableViewTypeNewRecipe && ![self.centerViewController isKindOfClass:[CreateRecipeViewController class]])
-    {
-
-        CreateRecipeViewController *createRecipeViewController = [[CreateRecipeViewController alloc] init];
-        createRecipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self setNewCenterViewController:createRecipeViewController WithCompletion:nil];
-        return;
-    }
-    else if (indexPath.row == MenuTableViewTypeMyRecipes && ![self.centerViewController isKindOfClass:[RecipeViewController class]])
-    {
-        RecipeViewController *recipeViewController = [[RecipeViewController alloc] init];
-        recipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        [self setNewCenterViewController:recipeViewController WithCompletion:nil];
-        return;
-    }
-    else
-    {
-        [self moveCenterViewControllerToOriginalPositionWithCompletion:^{
-            self.isShowingBottomViewController = NO;
-            self.menuBarView.isMenuOpen = NO;
-        }];
-    }
 }
 
 #pragma mark - Rotation

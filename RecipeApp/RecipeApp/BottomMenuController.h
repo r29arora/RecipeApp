@@ -24,20 +24,16 @@
 
 //Delegate
 @property (nonatomic, strong) id <BottomMenuControllerDelegate>delegate;
-
 // Child View Controllers
 @property (nonatomic, retain) UIViewController *centerViewController;
 @property (nonatomic, retain) MenuViewController *bottomViewController;
-
 // Menu Bar
 @property (nonatomic, strong) MenuBarView *menuBarView;
-
-//Other
+//Flags
 @property (nonatomic) BOOL isShowingBottomViewController;
 
 //Initializers
 - (instancetype)initWithCenterViewController:(UIViewController *)centerViewController;
-
 - (instancetype)initWithCenterViewController:(UIViewController *)centerViewController bottomViewController:(UIViewController *)bottomViewController;
 
 //Setup Methods
@@ -45,6 +41,8 @@
 
 //Transition Methods
 - (void)showBottomMenuController;
+- (void)setNewCenterViewController:(UIViewController *)centerViewController WithCompletion:(void (^)())completion;
+- (void)moveCenterViewControllerToOriginalPositionWithCompletion:(void (^) ())completion;
 
 
 @end

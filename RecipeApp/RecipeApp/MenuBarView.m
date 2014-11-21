@@ -25,12 +25,14 @@
         
         //Setup Visible Menu Bar View
         self.menuBar = [[UIView alloc] initWithFrame:CGRectMake(0, 18.0f, self.containerView.frame.size.width, self.containerView.frame.size.height-18.0f)];
-        self.menuBar.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:255.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+        self.menuBar.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8f];
         [self.containerView addSubview:self.menuBar];
         
         //Setup Menu button
         self.centerButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
-        self.centerButton.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:255.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+        self.centerButton.backgroundColor = [UIColor whiteColor];
+        self.centerButton.layer.borderColor = [[UIColor blackColor] CGColor];
+        self.centerButton.layer.borderWidth = 2.0f;
         [self.containerView addSubview:self.centerButton];
         
         //Setup Arrow Icon

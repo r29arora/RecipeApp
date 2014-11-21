@@ -8,18 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CreateRecipeViewControllerDelegate <NSObject>
+
+- (void)createRecipeViewControllerDidFinishEditing;
+
+@end
+
 @interface CreateRecipeViewController : UIViewController
 
-@property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) UITextField *titleTextField;
-@property (nonatomic, strong) UIView *textFieldSeparatorView;
+@property (nonatomic, strong) id<CreateRecipeViewControllerDelegate> delegate;
 
-@property (nonatomic, strong) UILabel *ingredientsSeparatorLabel;
-@property (nonatomic, strong) UIView *ingredientsSeparatorLine;
+@property (nonatomic, strong) UIScrollView *contentContainerView;
+
+@property (nonatomic, strong) UIView *titleContainerView;
+@property (nonatomic, strong) UIView *titleView;
+
 @property (nonatomic, strong) UIView *ingredientsContainerView;
-@property (nonatomic, strong) UITextView *ingredientsTextView;
+@property (nonatomic, strong) UIView *ingredientsView;
 
-@property (nonatomic, strong) UIView *checkMarkButton;
-@property (nonatomic, strong) UIImageView *checkMarkImage;
+@property (nonatomic, strong) UIView *directionsContainerView;
+@property (nonatomic, strong) UIView *directionsView;
 
 @end

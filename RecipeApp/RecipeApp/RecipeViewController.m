@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [layout setItemSize:CGSizeMake(self.view.frame.size.width/2.0f - 20.0f , 200.0f)];
+    [layout setItemSize:CGSizeMake(self.view.frame.size.width/2.0f - 15.0f , self.view.frame.size.width/2.0f - 20.0f)];
     self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 20.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 70.0f) collectionViewLayout:layout];
     self.recipeList.delegate = self;
     self.recipeList.dataSource = self;
