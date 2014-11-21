@@ -121,16 +121,12 @@
 
 - (void)moveCenterViewControllerToTop
 {
-    if ([self respondsToSelector:@selector(bottomMenuControllerWillTransition)])
-    {
-        [self.delegate bottomMenuControllerWillTransition];
-
-    }
-    
     if (!self.centerViewController || !self.bottomViewController)
     {
         return;
     }
+    
+    self.centerViewController.view.userInteractionEnabled = NO;
     
     CGRect frame2 = CGRectMake(0, SCREEN_HEIGHT - self.bottomViewController.view.frame.size.height, self.bottomViewController.view.frame.size.width, self.bottomViewController.view.frame.size.height);
     CGRect frameMenu = CGRectMake(0, SCREEN_HEIGHT - self.bottomViewController.view.frame.size.height - self.menuBarView.frame.size.height, self.menuBarView.frame.size.width, self.menuBarView.frame.size.height);
@@ -139,10 +135,7 @@
         self.bottomViewController.view.frame = frame2;
         self.menuBarView.frame = frameMenu;
         self.isShowingBottomViewController = YES;
-        if ([self respondsToSelector:@selector(bottomMenuControllerDidOpenMenu)])
-        {
-            [self.delegate bottomMenuControllerDidOpenMenu];
-        }
+        [self.delegate bottomMenuControllerDidOpenMenu];
     }];
 }
 
@@ -152,7 +145,9 @@
     {
         return;
     }
-
+    
+    self.centerViewController.view.userInteractionEnabled = YES;
+    
     [UIView animateWithDuration:0.25 animations:^{
         
         self.centerViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -165,10 +160,7 @@
         self.menuBarView.isMenuOpen = NO;
         [self.bottomViewController removeFromParentViewController];
         [self.bottomViewController.view removeFromSuperview];
-        if ([self respondsToSelector:@selector(bottomMenucontrollerDidCloseMenu)])
-        {
-            [self.delegate bottomMenucontrollerDidCloseMenu];
-        }
+        [self.delegate bottomMenucontrollerDidCloseMenu];
         
         if (completion)
         {
@@ -203,6 +195,8 @@
         return;
     }
     
+
+    
     [self moveCenterViewControllerToOriginalPositionWithCompletion:^{
         if (completion)
         {
@@ -215,6 +209,7 @@
 
 - (void)menuViewController:(MenuViewController *)menuViewController didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.delegate bottomMenuControllerWillTransition];
     if (indexPath.row == MenuTableViewTypeNewRecipe && ![self.centerViewController isKindOfClass:[CreateRecipeViewController class]])
     {
 

@@ -20,7 +20,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
     self.listView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    self.listView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4f];
+    self.listView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8f];
     self.listView.delegate = self;
     self.listView.dataSource = self;
     self.listView.bounces = NO;

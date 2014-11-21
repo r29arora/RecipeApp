@@ -17,21 +17,19 @@ static const CGFloat kSpacing = 10.0f;
     if (self = [super initWithFrame:frame])
     {
         self.recipeImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.recipeImage.backgroundColor = [UIColor blueColor];
+        self.recipeImage.backgroundColor = [UIColor colorWithRed:224.0f/255.0f green:255.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
+        self.recipeImage.contentMode = UIViewContentModeScaleAspectFill;
+        self.recipeImage.clipsToBounds = YES;
+        self.recipeImage.image = [UIImage imageNamed:@"background"];
         [self addSubview:self.recipeImage];
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.titleLabel.backgroundColor = [UIColor yellowColor];
+        self.titleLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         [self addSubview:self.titleLabel];
         
         self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.descriptionLabel.backgroundColor = [UIColor grayColor];
+        self.descriptionLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         [self addSubview:self.descriptionLabel];
-        
-        self.recipeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.recipeButton setTitle:@"Go To Recipe" forState:UIControlStateNormal];
-        self.recipeButton.backgroundColor = [UIColor greenColor];
-        [self addSubview:self.recipeButton];
     }
     return self;
 }
@@ -58,13 +56,6 @@ static const CGFloat kSpacing = 10.0f;
     CGFloat descriptionY = titleHeight + kSpacing;
     
     self.descriptionLabel.frame = CGRectMake(descriptionX, descriptionY, descriptionWidth - 3.0f*kSpacing, descriptionHeight - kSpacing);
-    
-    CGFloat buttonWidth = self.bounds.size.width;
-    CGFloat buttonHeight = self.bounds.size.height -  imageHeight;
-    CGFloat buttonX = kSpacing;
-    CGFloat buttonY = imageHeight + kSpacing;
-    
-    self.recipeButton.frame = CGRectMake(buttonX, buttonY, buttonWidth - 2.0f*kSpacing, buttonHeight - kSpacing*2.0f);
 }
 
 @end

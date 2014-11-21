@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UIImageView *recipeImage;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
-@property (nonatomic, strong) UIButton *recipeButton;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

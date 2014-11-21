@@ -8,6 +8,7 @@
 
 #import "RecipeViewController.h"
 #import "RecipeCollectionViewCell.h"
+#import "RecipeObject.h"
 
 @interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -17,11 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+
+    self.recipeObjectManager = [[RecipeObjectManager alloc] init];
+
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [layout setItemSize:CGSizeMake(self.view.frame.size.width - 20.0f, 250.0f)];
-    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 20.0f, self.view.frame.size.width, self.view.frame.size.height - 60.0f) collectionViewLayout:layout];
+    [layout setItemSize:CGSizeMake(self.view.frame.size.width/2.0f - 20.0f , 200.0f)];
+    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 20.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 70.0f) collectionViewLayout:layout];
     self.recipeList.delegate = self;
     self.recipeList.dataSource = self;
     self.recipeList.backgroundColor = [UIColor clearColor];
@@ -34,12 +38,20 @@
 {
     RecipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.titleLabel.text = @"Title Label";
+    cell.descriptionLabel.text = @"description Label";
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+//    return self.recipeObjectManager.recipeObjects.count;
+    return 20;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 10.0f;
 }
 
 @end

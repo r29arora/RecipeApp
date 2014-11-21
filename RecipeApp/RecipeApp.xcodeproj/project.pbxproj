@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */; };
+		AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */; };
 		AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9601A1E3580005626A5 /* MenuTableViewCell.m */; };
 		AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9661A1E4A37005626A5 /* RecipeViewController.m */; };
 		AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */; };
@@ -32,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA0C3EBC1A1EAA3100650ABA /* RecipeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObject.h; sourceTree = "<group>"; };
+		AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeObject.m; sourceTree = "<group>"; };
+		AA0C3EBF1A1EAC3D00650ABA /* RecipeObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObjectManager.h; sourceTree = "<group>"; };
+		AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeObjectManager.m; sourceTree = "<group>"; };
 		AA71E95F1A1E3580005626A5 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		AA71E9601A1E3580005626A5 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
 		AA71E9651A1E4A37005626A5 /* RecipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeViewController.h; sourceTree = "<group>"; };
@@ -76,6 +82,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0C3EBB1A1EAA1C00650ABA /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AA0C3EC21A1EAC4100650ABA /* RecipeObject */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		AA0C3EC21A1EAC4100650ABA /* RecipeObject */ = {
+			isa = PBXGroup;
+			children = (
+				AA0C3EBC1A1EAA3100650ABA /* RecipeObject.h */,
+				AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */,
+				AA0C3EBF1A1EAC3D00650ABA /* RecipeObjectManager.h */,
+				AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */,
+			);
+			name = RecipeObject;
+			sourceTree = "<group>";
+		};
+		AA70602B1A1F887F00944DB1 /* Create Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				AA71E9681A1E503C005626A5 /* CreateRecipeViewController.h */,
+				AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */,
+			);
+			name = "Create Recipes";
+			sourceTree = "<group>";
+		};
+		AA70602C1A1F889200944DB1 /* View Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				AA71E9651A1E4A37005626A5 /* RecipeViewController.h */,
+				AA71E9661A1E4A37005626A5 /* RecipeViewController.m */,
+			);
+			name = "View Recipes";
+			sourceTree = "<group>";
+		};
 		AA71E9621A1E4978005626A5 /* MenuBarTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +176,7 @@
 		AAEF76BD1A1D5A2B005A92B1 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA0C3EBB1A1EAA1C00650ABA /* Objects */,
 				AAEF76F01A1D81D5005A92B1 /* Views */,
 				AAEF76E41A1D5A33005A92B1 /* Controllers */,
 				AAEF76C21A1D5A2B005A92B1 /* AppDelegate.h */,
@@ -173,13 +217,9 @@
 		AAEF76E41A1D5A33005A92B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA70602C1A1F889200944DB1 /* View Recipes */,
+				AA70602B1A1F887F00944DB1 /* Create Recipes */,
 				AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */,
-				AAEF76ED1A1D6FAB005A92B1 /* MenuViewController.h */,
-				AAEF76EE1A1D6FAB005A92B1 /* MenuViewController.m */,
-				AA71E9651A1E4A37005626A5 /* RecipeViewController.h */,
-				AA71E9661A1E4A37005626A5 /* RecipeViewController.m */,
-				AA71E9681A1E503C005626A5 /* CreateRecipeViewController.h */,
-				AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +227,8 @@
 		AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF76ED1A1D6FAB005A92B1 /* MenuViewController.h */,
+				AAEF76EE1A1D6FAB005A92B1 /* MenuViewController.m */,
 				AAEF76E91A1D6061005A92B1 /* BottomMenuController.h */,
 				AAEF76EA1A1D6061005A92B1 /* BottomMenuController.m */,
 			);
@@ -305,9 +347,11 @@
 				AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */,
 				AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */,
 				AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */,
+				AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */,
 				AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */,
 				AA71E96E1A1E756B005626A5 /* RecipeCollectionViewCell.m in Sources */,
 				AAEF76EB1A1D6061005A92B1 /* BottomMenuController.m in Sources */,
+				AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
 			);

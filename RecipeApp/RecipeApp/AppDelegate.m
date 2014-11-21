@@ -14,7 +14,7 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
-@interface AppDelegate ()
+@interface AppDelegate () <BottomMenuControllerDelegate>
 
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
@@ -65,15 +65,28 @@
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 100.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
+    self.bottomMenuController.delegate = self;
     [self.bottomMenuController setupCenterView];
     
     self.window.rootViewController = self.bottomMenuController;
     [self.window makeKeyAndVisible];
 }
 
-- (void)showMenu
+#pragma mark - BottomMenuControllerDelegate
+
+- (void)bottomMenuControllerDidOpenMenu
 {
-    [self.bottomMenuController showBottomMenuController];
+    NSLog(@"App Delegate: Bottom Menu Controller Opened Menu");
+}
+
+- (void)bottomMenucontrollerDidCloseMenu
+{
+    NSLog(@"App Delegate: Bottom Menu Controller Closed Menu");
+}
+
+- (void)bottomMenuControllerWillTransition
+{
+    NSLog(@"App Delegate: Bottom Menu Controller Will Transition");
 }
 
 @end
