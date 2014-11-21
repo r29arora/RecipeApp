@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class CreateTitleView;
+
 @protocol CreateRecipeViewControllerDelegate <NSObject>
 
 - (void)createRecipeViewControllerDidFinishEditing;
@@ -21,7 +23,7 @@
 @property (nonatomic, strong) UIScrollView *contentContainerView;
 
 @property (nonatomic, strong) UIView *titleContainerView;
-@property (nonatomic, strong) UIView *titleView;
+@property (nonatomic, strong) CreateTitleView *titleView;
 
 @property (nonatomic, strong) UIView *ingredientsContainerView;
 @property (nonatomic, strong) UIView *ingredientsView;

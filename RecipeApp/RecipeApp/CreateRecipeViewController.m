@@ -10,7 +10,7 @@
 #import "BottomMenuController.h"
 #import "RecipeObject.h"
 #import "RecipeObjectManager.h"
-
+#import "CreateTitleView.h"
 
 @interface CreateRecipeViewController ()
 
@@ -30,7 +30,7 @@
     self.titleContainerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     [self.contentContainerView addSubview:self.titleContainerView];
     
-    self.titleView = [[UIView alloc] init];
+    self.titleView = [[CreateTitleView alloc] init];
     self.titleView.backgroundColor = [UIColor whiteColor];
     [self.titleContainerView addSubview:self.titleView];
     
