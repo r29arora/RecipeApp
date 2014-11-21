@@ -20,7 +20,8 @@
     [super viewDidLoad];
 
     self.recipeObjectManager = [[RecipeObjectManager alloc] init];
-
+    [self.recipeObjectManager loadDataFromDisk];
+    
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
@@ -45,8 +46,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-//    return self.recipeObjectManager.recipeObjects.count;
-    return 20;
+    return self.recipeObjectManager.recipeObjects.count;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

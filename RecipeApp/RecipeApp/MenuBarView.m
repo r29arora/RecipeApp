@@ -35,7 +35,7 @@
         
         //Setup Arrow Icon
         UIImageView *arrowImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down"]];
-        arrowImage.frame = self.centerButton.frame;
+        arrowImage.frame = CGRectMake(self.centerButton.frame.origin.x + 5.0f, self.centerButton.frame.origin.y + 5.0f, self.centerButton.frame.size.width - 10.0f, self.centerButton.frame.size.height - 10.0f);
         arrowImage.center = self.centerButton.center;
         arrowImage.contentMode = UIViewContentModeScaleAspectFill;
         [self.centerButton addSubview:arrowImage];
