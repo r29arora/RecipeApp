@@ -11,6 +11,7 @@
 #import "RecipeObject.h"
 #import "RecipeObjectManager.h"
 #import "CreateTitleView.h"
+#import "UIView+Shadow.h"
 
 @interface CreateRecipeViewController ()
 
@@ -56,11 +57,15 @@
     self.contentContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.titleContainerView.frame = self.contentContainerView.frame;
     self.titleView.frame = CGRectMake(30.0f, 30.0f, self.titleContainerView.frame.size.width - 60.0f, self.titleContainerView.frame.size.height - 100.0f);
+    [self.titleView createShadow];
+    
     self.ingredientsContainerView.frame = CGRectMake(CGRectGetMaxX(self.contentContainerView.frame), 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
     self.ingredientsView.frame = CGRectMake(30.0f, 30.0f, self.contentContainerView.frame.size.width - 60.0f, self.contentContainerView.frame.size.height - 100.0f);
+    [self.ingredientsView createShadow];
     
     self.directionsContainerView.frame = CGRectMake(CGRectGetMaxX(self.ingredientsContainerView.frame), 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
     self.directionsView.frame = CGRectMake(30.0f, 30.0f, self.contentContainerView.frame.size.width - 60.0f, self.contentContainerView.frame.size.height - 100.0f);
+    [self.directionsView createShadow];
     
     self.contentContainerView.contentSize = CGSizeMake(CGRectGetMaxX(self.directionsContainerView.frame), self.contentContainerView.frame.size.height);
 }

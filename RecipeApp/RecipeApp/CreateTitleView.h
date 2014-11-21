@@ -14,6 +14,9 @@
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UITextView *authorLabel;
 
+@property (nonatomic) BOOL didChangeTitleLabelForTheFirstTime;
+@property (nonatomic) BOOL didChangeAuthorLabelForTheFirstTime;
+
 - (instancetype)init;
 
 @end

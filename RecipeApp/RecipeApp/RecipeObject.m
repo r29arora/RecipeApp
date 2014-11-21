@@ -15,6 +15,7 @@
     if (self = [super init])
     {
         [aDecoder decodeObjectForKey:@"title"];
+        [aDecoder decodeObjectForKey:@"author"];
     }
     return self;
 }
@@ -22,6 +23,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeObject:_author forKey:@"author"];
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0835043EB1E949090D9E0221 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F693CB631C5B06BBAE2910 /* libPods.a */; };
 		AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */; };
 		AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */; };
 		AA7060301A1FEC4200944DB1 /* CreateTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */; };
@@ -14,6 +15,7 @@
 		AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9661A1E4A37005626A5 /* RecipeViewController.m */; };
 		AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */; };
 		AA71E96E1A1E756B005626A5 /* RecipeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E96D1A1E756B005626A5 /* RecipeCollectionViewCell.m */; };
+		AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */; };
 		AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C01A1D5A2B005A92B1 /* main.m */; };
 		AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C31A1D5A2B005A92B1 /* AppDelegate.m */; };
 		AAEF76CC1A1D5A2B005A92B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF76CB1A1D5A2B005A92B1 /* Images.xcassets */; };
@@ -49,6 +51,8 @@
 		AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRecipeViewController.m; sourceTree = "<group>"; };
 		AA71E96C1A1E756B005626A5 /* RecipeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCollectionViewCell.h; sourceTree = "<group>"; };
 		AA71E96D1A1E756B005626A5 /* RecipeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCollectionViewCell.m; sourceTree = "<group>"; };
+		AABF04FC1A1FF68E00A677A6 /* UIView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shadow.h"; sourceTree = "<group>"; };
+		AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shadow.m"; sourceTree = "<group>"; };
 		AAEF76BB1A1D5A2B005A92B1 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF76BF1A1D5A2B005A92B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAEF76C01A1D5A2B005A92B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +69,9 @@
 		AAEF76EE1A1D6FAB005A92B1 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		AAEF76F11A1D81E2005A92B1 /* MenuBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBarView.h; sourceTree = "<group>"; };
 		AAEF76F21A1D81E2005A92B1 /* MenuBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBarView.m; sourceTree = "<group>"; };
+		C7F693CB631C5B06BBAE2910 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2B272004653CC155C933C3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FB70FECB01CCECEC10017F38 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0835043EB1E949090D9E0221 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CD36A6B8A5D74A722577EB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F693CB631C5B06BBAE2910 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA0C3EBB1A1EAA1C00650ABA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +183,23 @@
 			name = RecipeCollectionView;
 			sourceTree = "<group>";
 		};
+		AABF04FB1A1FF67800A677A6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AABF04FC1A1FF68E00A677A6 /* UIView+Shadow.h */,
+				AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		AAEF76B21A1D5A2B005A92B1 = {
 			isa = PBXGroup;
 			children = (
 				AAEF76BD1A1D5A2B005A92B1 /* RecipeApp */,
 				AAEF76D71A1D5A2C005A92B1 /* RecipeAppTests */,
 				AAEF76BC1A1D5A2B005A92B1 /* Products */,
+				C01EE8193D4B9EC35C44937D /* Pods */,
+				3CD36A6B8A5D74A722577EB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +215,7 @@
 		AAEF76BD1A1D5A2B005A92B1 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				AABF04FB1A1FF67800A677A6 /* Categories */,
 				AA0C3EBB1A1EAA1C00650ABA /* Objects */,
 				AAEF76F01A1D81D5005A92B1 /* Views */,
 				AAEF76E41A1D5A33005A92B1 /* Controllers */,
@@ -257,6 +285,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		C01EE8193D4B9EC35C44937D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED2B272004653CC155C933C3 /* Pods.debug.xcconfig */,
+				FB70FECB01CCECEC10017F38 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,9 +301,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAEF76DE1A1D5A2C005A92B1 /* Build configuration list for PBXNativeTarget "RecipeApp" */;
 			buildPhases = (
+				C513DFA35823F1652E1809C5 /* Check Pods Manifest.lock */,
 				AAEF76B71A1D5A2B005A92B1 /* Sources */,
 				AAEF76B81A1D5A2B005A92B1 /* Frameworks */,
 				AAEF76B91A1D5A2B005A92B1 /* Resources */,
+				3227AE87DE9B5DE59014000E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,6 +390,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3227AE87DE9B5DE59014000E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C513DFA35823F1652E1809C5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AAEF76B71A1D5A2B005A92B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -365,6 +437,7 @@
 				AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */,
 				AA71E96E1A1E756B005626A5 /* RecipeCollectionViewCell.m in Sources */,
 				AAEF76EB1A1D6061005A92B1 /* BottomMenuController.m in Sources */,
+				AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */,
 				AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
@@ -481,6 +554,7 @@
 		};
 		AAEF76DF1A1D5A2C005A92B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED2B272004653CC155C933C3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RecipeApp/Info.plist;
@@ -492,6 +566,7 @@
 		};
 		AAEF76E01A1D5A2C005A92B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB70FECB01CCECEC10017F38 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RecipeApp/Info.plist;

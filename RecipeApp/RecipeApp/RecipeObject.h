@@ -11,5 +11,6 @@
 @interface RecipeObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *author;
 
 @end
