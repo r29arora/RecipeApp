@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class CreateTitleView;
+@class CreateIngredientsView;
+@class RecipeObject;
 
 @protocol CreateRecipeViewControllerDelegate <NSObject>
 
@@ -26,9 +28,11 @@
 @property (nonatomic, strong) CreateTitleView *titleView;
 
 @property (nonatomic, strong) UIView *ingredientsContainerView;
-@property (nonatomic, strong) UIView *ingredientsView;
+@property (nonatomic, strong) CreateIngredientsView *ingredientsView;
 
 @property (nonatomic, strong) UIView *directionsContainerView;
 @property (nonatomic, strong) UIView *directionsView;
+
+@property (nonatomic, strong) RecipeObject *currentRecipe;
 
 @end

@@ -11,6 +11,7 @@
 #import "RecipeObject.h"
 #import "RecipeObjectManager.h"
 #import "CreateTitleView.h"
+#import "CreateIngredientsView.h"
 #import "UIView+Shadow.h"
 
 @interface CreateRecipeViewController ()
@@ -39,7 +40,7 @@
     self.ingredientsContainerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     [self.contentContainerView addSubview:self.ingredientsContainerView];
     
-    self.ingredientsView = [[UIView alloc] init];
+    self.ingredientsView = [[CreateIngredientsView alloc] init];
     self.ingredientsView.backgroundColor = [UIColor whiteColor];
     [self.ingredientsContainerView addSubview:self.ingredientsView];
     
@@ -50,6 +51,8 @@
     self.directionsView = [[UIView alloc] init];
     self.directionsView.backgroundColor = [UIColor whiteColor];
     [self.directionsContainerView addSubview:self.directionsView];
+    
+    self.currentRecipe = [[RecipeObject alloc] init];
 }
 
 - (void)viewWillLayoutSubviews
@@ -70,6 +73,11 @@
     self.contentContainerView.contentSize = CGSizeMake(CGRectGetMaxX(self.directionsContainerView.frame), self.contentContainerView.frame.size.height);
 }
 
+- (void)dealloc
+{
+    self.currentRecipe = nil;
+}
+
 #pragma mark - Saving Recipe Object
 
 - (void)saveCurrentRecipe
@@ -79,11 +87,11 @@
     [recipeManager loadDataFromDisk];
     
     // Set Data Here
+    [recipeManager.recipeObjects addObject:self.currentRecipe];
     
     [recipeManager saveDataToDisk];
     
     // Send Message to Delegate
     [self.delegate createRecipeViewControllerDidFinishEditing];
 }
-
 @end
