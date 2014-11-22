@@ -18,6 +18,7 @@
         self.titleLabel.text = @"Enter a Title";
         self.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         self.titleLabel.scrollEnabled = NO;
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.delegate = self;
         [self addSubview:self.titleLabel];
         
