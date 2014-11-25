@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0835043EB1E949090D9E0221 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F693CB631C5B06BBAE2910 /* libPods.a */; };
+		8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */; };
+		8F179EF11A25131C00F2B053 /* RATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF01A25131C00F2B053 /* RATextField.m */; };
 		AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */; };
 		AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */; };
 		AA7060301A1FEC4200944DB1 /* CreateTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F179EEB1A2512DE00F2B053 /* IngredientsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsTableViewCell.h; sourceTree = "<group>"; };
+		8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsTableViewCell.m; sourceTree = "<group>"; };
+		8F179EEF1A25131C00F2B053 /* RATextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RATextField.h; sourceTree = "<group>"; };
+		8F179EF01A25131C00F2B053 /* RATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATextField.m; sourceTree = "<group>"; };
 		AA0C3EBC1A1EAA3100650ABA /* RecipeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObject.h; sourceTree = "<group>"; };
 		AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeObject.m; sourceTree = "<group>"; };
 		AA0C3EBF1A1EAC3D00650ABA /* RecipeObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObjectManager.h; sourceTree = "<group>"; };
@@ -104,6 +110,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8F179EEE1A25130A00F2B053 /* RATextField */ = {
+			isa = PBXGroup;
+			children = (
+				8F179EEF1A25131C00F2B053 /* RATextField.h */,
+				8F179EF01A25131C00F2B053 /* RATextField.m */,
+			);
+			name = RATextField;
+			sourceTree = "<group>";
+		};
 		AA0C3EBB1A1EAA1C00650ABA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +163,8 @@
 				AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */,
 				AABF04FF1A1FFC6800A677A6 /* CreateIngredientsView.h */,
 				AABF05001A1FFC6800A677A6 /* CreateIngredientsView.m */,
+				8F179EEB1A2512DE00F2B053 /* IngredientsTableViewCell.h */,
+				8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */,
 			);
 			name = CreateRecipesView;
 			sourceTree = "<group>";
@@ -283,6 +300,7 @@
 		AAEF76F01A1D81D5005A92B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F179EEE1A25130A00F2B053 /* RATextField */,
 				AA70602D1A1FEC2D00944DB1 /* CreateRecipesView */,
 				AA71E96B1A1E7556005626A5 /* RecipeCollectionView */,
 				AA71E9641A1E4995005626A5 /* MenuBar */,
@@ -434,8 +452,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */,
+				8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */,
 				AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */,
 				AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */,
+				8F179EF11A25131C00F2B053 /* RATextField.m in Sources */,
 				AABF05011A1FFC6800A677A6 /* CreateIngredientsView.m in Sources */,
 				AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */,
 				AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */,

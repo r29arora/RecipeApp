@@ -12,8 +12,9 @@
 
 @property (nonatomic, strong) UILabel *ingredientsLabel;
 @property (nonatomic, strong) UIView *separatorView;
-@property (nonatomic, strong) UITextView *ingredientsTextView;
+@property (nonatomic, strong) UITableView *ingredientsTableView;
 
 - (instancetype)init;
+
 
 @end
