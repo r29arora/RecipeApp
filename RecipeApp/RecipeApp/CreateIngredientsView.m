@@ -97,12 +97,16 @@
         cell = [[IngredientsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     }
     
+    cell.delegate = self;
+    cell.indexPath = indexPath;
+    
     if (!cell.textField)
     {
         //initialize textfield if it hasn't already been initialized
         [cell setupTextField];
     }
     
+    // Normal ingredients cell
     if (indexPath.row < ingredients.count)
     {
         if (ingredients[indexPath.row])
@@ -111,14 +115,24 @@
             cell.textField.text = ingredients[indexPath.row];
         }
     }
-    else if (indexPath.row == ingredients.count)
+    // Add Ingredients Button
+    if (indexPath.row == ingredients.count)
     {
         // Create a button rather than a textfield in the cell
-        [cell replaceTextFieldWithAddSectionButton];
+        if (!cell.addTextFieldButton)
+        {
+            [cell replaceTextFieldWithAddRowButton];
+        }
     }
-    
-    cell.delegate = self;
-    cell.indexPath = indexPath;
+    // Add Section Button
+    if (indexPath.row == ingredients.count + 1)
+    {
+        // Create a button rather than a textfieldin the cell
+        if (!cell.addTextFieldButton)
+        {
+            [cell replaceTextFieldWithAddSectionButton];
+        }
+    }
     
     return cell;
 }
@@ -178,8 +192,17 @@
 {
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     [ingredients addObject:@"Enter a New Ingredient"];
-    [self.ingredientsTableView reloadData];
-    [self.ingredientsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ingredients.count inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.ingredientsTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:ingredients.count - 1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.ingredientsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ingredients.count + 1 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapAddSectionButtonAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *newIngredientsArray = [[NSMutableArray alloc] init];
+    [self.ingredientSections insertObject:newIngredientsArray atIndex:indexPath.section+1];
+    [self.sectionHeaders insertObject:@"Enter a Section Title" atIndex:indexPath.section+1];
+    [self.ingredientsTableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section+1] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.ingredientsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:newIngredientsArray.count+1 inSection:indexPath.section + 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath

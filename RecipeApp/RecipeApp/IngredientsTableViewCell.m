@@ -21,6 +21,12 @@
     if (self.addTextFieldButton)
     {
         [self.addTextFieldButton removeFromSuperview];
+        self.addTextFieldButton = nil;
+    }
+    if (self.addSectionButton)
+    {
+        [self.addSectionButton removeFromSuperview];
+        self.addSectionButton = nil;
     }
     self.textField = [[RATextField alloc] init];
     self.textField.delegate = self;
@@ -39,6 +45,31 @@
     [self addSubview:self.addTextFieldButton];
 }
 
+- (void)setupAddSectionButton
+{
+    self.addSectionButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [self.addSectionButton setTitle:@" Add Section" forState:UIControlStateNormal];
+    [self.addSectionButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.addSectionButton setTintColor:[UIColor grayColor]];
+    [self.addSectionButton addTarget:self action:@selector(didTapAddSection:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.addSectionButton];
+}
+
+- (void)replaceTextFieldWithAddRowButton
+{
+    if (self.textField)
+    {
+        [self.textField removeFromSuperview];
+        self.textField = nil;
+    }
+    if (self.addSectionButton)
+    {
+        [self.addSectionButton removeFromSuperview];
+        self.addSectionButton = nil;
+    }
+    [self setupAddTextFieldButton];
+}
+
 - (void)replaceTextFieldWithAddSectionButton
 {
     if (self.textField)
@@ -46,7 +77,13 @@
         [self.textField removeFromSuperview];
         self.textField = nil;
     }
-    [self setupAddTextFieldButton];
+    if (self.addTextFieldButton)
+    {
+        [self.addTextFieldButton removeFromSuperview];
+        self.addTextFieldButton = nil;
+    }
+    [self setupAddSectionButton];
+    
 }
 
 - (void)layoutSubviews
@@ -59,11 +96,20 @@
     {
         self.addTextFieldButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     }
+    if (self.addSectionButton)
+    {
+        self.addSectionButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    }
 }
 
 - (void)didTapAddTextField:(id)sender
 {
     [self.delegate ingredientsTableViewCell:self didTapAddTextFieldButtonAtIndexPath:self.indexPath];
+}
+
+- (void)didTapAddSection:(id)sender
+{
+    [self.delegate ingredientsTableViewCell:self didTapAddSectionButtonAtIndexPath:self.indexPath];
 }
 
 #pragma mark - UITextFieldDelegate
