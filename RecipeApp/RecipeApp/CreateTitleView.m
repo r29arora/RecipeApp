@@ -36,7 +36,21 @@
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
         [self addGestureRecognizer:tapGestureRecognizer];
-}
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillChangeFrameNotification
+                                                   object:nil];
+    }
+
     return self;
 }
 
@@ -60,6 +74,20 @@
     CGFloat authorLabelX = (self.frame.size.width - sizeThatFitsAuthorLabel.width)/2.0f;
     
     self.authorLabel.frame = CGRectMake(authorLabelX, CGRectGetMaxY(self.separatorView.frame) + 10.0f, sizeThatFitsAuthorLabel.width, sizeThatFitsAuthorLabel.height);
+}
+
+#pragma mark - NSNotificationCenter Notification Handling
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGFloat keyboardHeight = keyboardSize.height;
+    CGFloat keyboardY = self.frame.size.height - keyboardHeight;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    
 }
 
 #pragma mark - Actions

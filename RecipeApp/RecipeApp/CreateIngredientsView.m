@@ -88,8 +88,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *reuseIdentifier = @"cell";
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
-    IngredientsTableViewCell *cell = (IngredientsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    IngredientsTableViewCell *cell = (IngredientsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    
+    if (!cell)
+    {
+        cell = [[IngredientsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    }
     
     if (!cell.textField)
     {
@@ -120,7 +126,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSMutableArray *ingredients =  self.ingredientSections[section];
-    return ingredients.count + 1;
+    return ingredients.count + 2;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -200,7 +206,7 @@
     }
 }
 
-#pragma mark - IngredientsSectionHeaderviewDelegate
+#pragma mark - IngredientsSectionHeaderViewDelegate
 
 - (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didUpdateHeaderViewInSection:(NSInteger)section
 {

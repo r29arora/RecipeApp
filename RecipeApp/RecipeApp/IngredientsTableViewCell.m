@@ -33,8 +33,8 @@
 {
     self.addTextFieldButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
     [self.addTextFieldButton setTitle:@" Add Ingredient" forState:UIControlStateNormal];
-    [self.addTextFieldButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.addTextFieldButton setTintColor:[UIColor blackColor]];
+    [self.addTextFieldButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.addTextFieldButton setTintColor:[UIColor grayColor]];
     [self.addTextFieldButton addTarget:self action:@selector(didTapAddTextField:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.addTextFieldButton];
 }
