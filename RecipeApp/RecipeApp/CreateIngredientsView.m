@@ -47,12 +47,24 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
         [self.ingredientsTableView addGestureRecognizer:tapGesture];
         
+        UITapGestureRecognizer *viewTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+        [self addGestureRecognizer:viewTapGesture];
+        
         self.ingredientSections = [[NSMutableArray alloc] init];
         NSMutableArray *ingredients = [[NSMutableArray alloc] init];
         [self.ingredientSections addObject:ingredients];
         
         self.sectionHeaders = [[NSMutableArray alloc] init];
         [self.sectionHeaders addObject:@"Section 1"];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:)
+                                                     name:UIKeyboardWillHideNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -133,7 +145,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30.0f;
+    return 40.0f;
+}
+
+#pragma mark - NSNotificationCenter Notification Handling
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGFloat keyboardHeight = keyboardSize.height;
+    
+    if (self.ingredientsTableView.contentSize.height > self.frame.size.height)
+    {
+        self.ingredientsTableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, keyboardHeight, 0.0f);
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    self.ingredientsTableView.contentInset = UIEdgeInsetsZero;
 }
 
 #pragma mark - IngredientsTableViewCellDelegate
@@ -143,6 +173,7 @@
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     [ingredients addObject:@"Enter a New Ingredient"];
     [self.ingredientsTableView reloadData];
+    [self.ingredientsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:ingredients.count inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath

@@ -76,6 +76,7 @@
 - (void)dealloc
 {
     self.currentRecipe = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self.ingredientsView];
 }
 
 #pragma mark - Saving Recipe Object
@@ -89,9 +90,9 @@
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
     self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
+    
     // Set Data Here
     [recipeManager.recipeObjects addObject:self.currentRecipe];
-    
     [recipeManager saveDataToDisk];
     
     // Send Message to Delegate
