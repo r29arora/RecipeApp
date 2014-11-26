@@ -13,18 +13,22 @@
 
 @protocol IngredientsTableViewCellDelegate <NSObject>
 
-- (void)didTapAddTextFieldCell:(IngredientsTableViewCell *)cell atIndex:(NSInteger)index;
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapAddTextFieldButtonAtIndexPath:(NSIndexPath *)indexPath;
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath;
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didChangeCharactersAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @interface IngredientsTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) RATextField *textField;
-@property (nonatomic) NSInteger index;
+@property (nonatomic, strong) UIButton *addTextFieldButton;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic) BOOL isLastCell;
 
 @property (nonatomic, strong) id <IngredientsTableViewCellDelegate> delegate;
 
 - (void)setupTextField;
+- (void)replaceTextFieldWithAddSectionButton;
 
 @end

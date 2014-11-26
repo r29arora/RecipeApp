@@ -8,8 +8,9 @@
 
 #import "CreateIngredientsView.h"
 #import "IngredientsTableViewCell.h"
+#import "IngredientsSectionHeaderView.h"
 
-@interface CreateIngredientsView () <UITableViewDelegate, UITableViewDataSource, IngredientsTableViewCellDelegate>
+@interface CreateIngredientsView () <UITableViewDelegate, UITableViewDataSource, IngredientsTableViewCellDelegate, IngredientsSectionHeaderViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *ingredientSections;
 @property (nonatomic, strong) NSMutableArray *sectionHeaders;
@@ -36,17 +37,18 @@
         self.ingredientsTableView = [[UITableView alloc] init];
         self.ingredientsTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         self.ingredientsTableView.showsHorizontalScrollIndicator = NO;
-        self.ingredientsTableView.bounces = NO;
         self.ingredientsTableView.showsVerticalScrollIndicator = NO;
         self.ingredientsTableView.delegate = self;
         self.ingredientsTableView.dataSource = self;
+        
         [self.ingredientsTableView registerClass:[IngredientsTableViewCell class] forCellReuseIdentifier:@"cell"];
         [self addSubview:self.ingredientsTableView];
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+        [self.ingredientsTableView addGestureRecognizer:tapGesture];
+        
         self.ingredientSections = [[NSMutableArray alloc] init];
         NSMutableArray *ingredients = [[NSMutableArray alloc] init];
-        [ingredients addObject:@"one"];
-        [ingredients addObject:@"two"];
         [self.ingredientSections addObject:ingredients];
         
         self.sectionHeaders = [[NSMutableArray alloc] init];
@@ -65,13 +67,21 @@
     self.ingredientsTableView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.separatorView.frame) + 10.0f, self.frame.size.width - 20.0f, self.frame.size.height - CGRectGetMaxY(self.separatorView.frame) - 20.0f);
 }
 
+- (void)didTapView:(id)sender
+{
+    [self endEditing:YES];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     IngredientsTableViewCell *cell = (IngredientsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell setupTextField];
+    if (!cell.textField)
+    {
+        [cell setupTextField];
+    }
     if (indexPath.row < ingredients.count)
     {
         if (ingredients[indexPath.row])
@@ -82,10 +92,10 @@
     else if (indexPath.row == ingredients.count)
     {
         // Create a button rather than a textfield in the cell
-        cell.textField.text = @"Add new";
+        [cell replaceTextFieldWithAddSectionButton];
     }
     cell.delegate = self;
-    cell.index = indexPath.row;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -100,17 +110,51 @@
     return self.ingredientSections.count;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.sectionHeaders[section];
+    NSString *sectionTitle = self.sectionHeaders[section];
+    IngredientsSectionHeaderView *sectionHeaderView = [[IngredientsSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.0f) sectionNumber:section];
+    sectionHeaderView.textField.text = sectionTitle;
+    sectionHeaderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    return sectionHeaderView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40.0f;
 }
 
 #pragma mark - IngredientsTableViewCellDelegate
 
-- (void)didTapAddTextFieldCell:(IngredientsTableViewCell *)cell atIndex:(NSInteger)index
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapAddTextFieldButtonAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *indexPaths = @[[NSNumber numberWithLong:index]];
-    [self.ingredientsTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+    NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
+    [ingredients addObject:@"New Row"];
+    [self.ingredientsTableView reloadData];
+}
+
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
+    ingredients[indexPath.row]  = cell.textField.text;
+}
+
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didChangeCharactersAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
+    ingredients[indexPath.row] = cell.textField.text;
+}
+
+#pragma mark - IngredientsSectionHeaderviewDelegate
+
+- (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didUpdateHeaderViewInSection:(NSInteger)section
+{
+    self.sectionHeaders[section] = headerView.textField.text;
 }
 
 @end
