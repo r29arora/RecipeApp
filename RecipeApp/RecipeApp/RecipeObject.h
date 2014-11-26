@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSMutableArray *ingredients;
 
 @end

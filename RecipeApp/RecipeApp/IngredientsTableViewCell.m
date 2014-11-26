@@ -24,6 +24,7 @@
     }
     self.textField = [[RATextField alloc] init];
     self.textField.delegate = self;
+    self.textField.font = [UIFont systemFontOfSize:14.0f];
     self.didEditOnce = NO;
     [self addSubview:self.textField];
 }
@@ -71,6 +72,7 @@
 {
     if (!self.didEditOnce)
     {
+        self.textField.text = @"";
         self.didEditOnce = YES;
     }
 }
@@ -89,6 +91,12 @@
     {
         [self.delegate ingredientsTableViewCell:self didChangeCharactersAtIndexPath:self.indexPath];
     }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.delegate ingredientsTableViewCell:self didTapReturnAtIndexPath:self.indexPath];
     return YES;
 }
 

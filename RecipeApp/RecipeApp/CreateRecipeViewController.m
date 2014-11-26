@@ -86,6 +86,9 @@
     
     [recipeManager loadDataFromDisk];
     
+    self.currentRecipe.title = self.titleView.titleLabel.text;
+    self.currentRecipe.author = self.titleView.authorLabel.text;
+    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
     // Set Data Here
     [recipeManager.recipeObjects addObject:self.currentRecipe];
     

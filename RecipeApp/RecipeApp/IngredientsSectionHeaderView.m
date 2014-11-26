@@ -23,8 +23,8 @@
     {
         self.sectionNumer = sectionNumber;
         self.textField = [[RATextField alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        self.textField.font = [UIFont boldSystemFontOfSize:14.0f];
-        self.textField.textAlignment = NSTextAlignmentCenter;
+        self.textField.font = [UIFont boldSystemFontOfSize:16.0f];
+        self.textField.textAlignment = NSTextAlignmentNatural;
         self.textField.delegate = self;
         self.isFirstTimeEditing = YES;
         [self addSubview:self.textField];
@@ -47,6 +47,15 @@
     {
         [self.delegate ingredientsSectionHeaderView:self didUpdateHeaderViewInSection:self.sectionNumer];
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (self.textField.text)
+    {
+        [self.delegate ingredientsSectionHeaderView:self didUpdateHeaderViewInSection:self.sectionNumer];
+    }
+    return YES;
 }
 
 @end

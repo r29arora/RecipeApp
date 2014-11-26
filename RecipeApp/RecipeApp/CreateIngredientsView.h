@@ -13,8 +13,8 @@
 @property (nonatomic, strong) UILabel *ingredientsLabel;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UITableView *ingredientsTableView;
+@property (nonatomic, readonly) NSMutableArray *ingredientSections;
 
 - (instancetype)init;
-
 
 @end

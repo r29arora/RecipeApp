@@ -16,6 +16,7 @@
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapAddTextFieldButtonAtIndexPath:(NSIndexPath *)indexPath;
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath;
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didChangeCharactersAtIndexPath:(NSIndexPath *)indexPath;
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapReturnAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

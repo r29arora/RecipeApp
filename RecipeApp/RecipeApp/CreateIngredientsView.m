@@ -35,12 +35,12 @@
         [self addSubview:self.separatorView];
         
         self.ingredientsTableView = [[UITableView alloc] init];
-        self.ingredientsTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        self.ingredientsTableView.backgroundColor = [UIColor whiteColor];
         self.ingredientsTableView.showsHorizontalScrollIndicator = NO;
         self.ingredientsTableView.showsVerticalScrollIndicator = NO;
         self.ingredientsTableView.delegate = self;
         self.ingredientsTableView.dataSource = self;
-        
+        self.ingredientsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.ingredientsTableView registerClass:[IngredientsTableViewCell class] forCellReuseIdentifier:@"cell"];
         [self addSubview:self.ingredientsTableView];
         
@@ -78,14 +78,18 @@
 {
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     IngredientsTableViewCell *cell = (IngredientsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
     if (!cell.textField)
     {
+        //initialize textfield if it hasn't already been initialized
         [cell setupTextField];
     }
+    
     if (indexPath.row < ingredients.count)
     {
         if (ingredients[indexPath.row])
         {
+            //Set the textfield text from the array of ingredients at the current section
             cell.textField.text = ingredients[indexPath.row];
         }
     }
@@ -94,8 +98,10 @@
         // Create a button rather than a textfield in the cell
         [cell replaceTextFieldWithAddSectionButton];
     }
+    
     cell.delegate = self;
     cell.indexPath = indexPath;
+    
     return cell;
 }
 
@@ -115,7 +121,8 @@
     NSString *sectionTitle = self.sectionHeaders[section];
     IngredientsSectionHeaderView *sectionHeaderView = [[IngredientsSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.0f) sectionNumber:section];
     sectionHeaderView.textField.text = sectionTitle;
-    sectionHeaderView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    sectionHeaderView.delegate = self;
+    sectionHeaderView.backgroundColor = [UIColor whiteColor];
     return sectionHeaderView;
 }
 
@@ -126,7 +133,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40.0f;
+    return 30.0f;
 }
 
 #pragma mark - IngredientsTableViewCellDelegate
@@ -134,26 +141,39 @@
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapAddTextFieldButtonAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
-    [ingredients addObject:@"New Row"];
+    [ingredients addObject:@"Enter a New Ingredient"];
     [self.ingredientsTableView reloadData];
 }
 
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didFinishEditingAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Update ingredients array with appropriate content
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     ingredients[indexPath.row]  = cell.textField.text;
 }
 
 - (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didChangeCharactersAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Update ingredients array with appropriate content
     NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
     ingredients[indexPath.row] = cell.textField.text;
+}
+
+- (void)ingredientsTableViewCell:(IngredientsTableViewCell *)cell didTapReturnAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *ingredients = self.ingredientSections[indexPath.section];
+    //Add a new cell if you are the last textfield
+    if (indexPath.row == ingredients.count - 1)
+    {
+        [self ingredientsTableViewCell:cell didTapAddTextFieldButtonAtIndexPath:indexPath];
+    }
 }
 
 #pragma mark - IngredientsSectionHeaderviewDelegate
 
 - (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didUpdateHeaderViewInSection:(NSInteger)section
 {
+    // Update Section Headers array with appropriate content
     self.sectionHeaders[section] = headerView.textField.text;
 }
 
