@@ -13,6 +13,7 @@
 #import "CreateTitleView.h"
 #import "CreateIngredientsView.h"
 #import "UIView+Shadow.h"
+#import "CreateDirectionsView.h"
 
 @interface CreateRecipeViewController ()
 
@@ -48,7 +49,7 @@
     self.directionsContainerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     [self.contentContainerView addSubview:self.directionsContainerView];
     
-    self.directionsView = [[UIView alloc] init];
+    self.directionsView = [[CreateDirectionsView alloc] init];
     self.directionsView.backgroundColor = [UIColor whiteColor];
     [self.directionsContainerView addSubview:self.directionsView];
     

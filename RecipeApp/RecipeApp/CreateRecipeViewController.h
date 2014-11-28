@@ -10,6 +10,7 @@
 
 @class CreateTitleView;
 @class CreateIngredientsView;
+@class CreateDirectionsView;
 @class RecipeObject;
 
 @protocol CreateRecipeViewControllerDelegate <NSObject>
@@ -31,7 +32,7 @@
 @property (nonatomic, strong) CreateIngredientsView *ingredientsView;
 
 @property (nonatomic, strong) UIView *directionsContainerView;
-@property (nonatomic, strong) UIView *directionsView;
+@property (nonatomic, strong) CreateDirectionsView *directionsView;
 
 @property (nonatomic, strong) RecipeObject *currentRecipe;
 

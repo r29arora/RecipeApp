@@ -11,6 +11,8 @@
 		8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */; };
 		8F179EF11A25131C00F2B053 /* RATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF01A25131C00F2B053 /* RATextField.m */; };
 		8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */; };
+		8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */; };
+		8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC02031A28C97A00A73F2F /* DirectionsTableViewCell.m */; };
 		AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */; };
 		AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C3EC01A1EAC3D00650ABA /* RecipeObjectManager.m */; };
 		AA7060301A1FEC4200944DB1 /* CreateTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */; };
@@ -47,6 +49,10 @@
 		8F179EF01A25131C00F2B053 /* RATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATextField.m; sourceTree = "<group>"; };
 		8F179EF21A25325A00F2B053 /* IngredientsSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsSectionHeaderView.h; sourceTree = "<group>"; };
 		8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsSectionHeaderView.m; sourceTree = "<group>"; };
+		8FFC01FC1A28C61E00A73F2F /* CreateDirectionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDirectionsView.h; sourceTree = "<group>"; };
+		8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDirectionsView.m; sourceTree = "<group>"; };
+		8FFC02021A28C97A00A73F2F /* DirectionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsTableViewCell.h; sourceTree = "<group>"; };
+		8FFC02031A28C97A00A73F2F /* DirectionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsTableViewCell.m; sourceTree = "<group>"; };
 		AA0C3EBC1A1EAA3100650ABA /* RecipeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObject.h; sourceTree = "<group>"; };
 		AA0C3EBD1A1EAA3100650ABA /* RecipeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeObject.m; sourceTree = "<group>"; };
 		AA0C3EBF1A1EAC3D00650ABA /* RecipeObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeObjectManager.h; sourceTree = "<group>"; };
@@ -122,6 +128,39 @@
 			name = RATextField;
 			sourceTree = "<group>";
 		};
+		8FFC01FF1A28C92000A73F2F /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				AA70602E1A1FEC4200944DB1 /* CreateTitleView.h */,
+				AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */,
+			);
+			name = Title;
+			sourceTree = "<group>";
+		};
+		8FFC02001A28C93200A73F2F /* Ingredients */ = {
+			isa = PBXGroup;
+			children = (
+				AABF04FF1A1FFC6800A677A6 /* CreateIngredientsView.h */,
+				AABF05001A1FFC6800A677A6 /* CreateIngredientsView.m */,
+				8F179EEB1A2512DE00F2B053 /* IngredientsTableViewCell.h */,
+				8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */,
+				8F179EF21A25325A00F2B053 /* IngredientsSectionHeaderView.h */,
+				8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */,
+			);
+			name = Ingredients;
+			sourceTree = "<group>";
+		};
+		8FFC02011A28C94800A73F2F /* Directions */ = {
+			isa = PBXGroup;
+			children = (
+				8FFC01FC1A28C61E00A73F2F /* CreateDirectionsView.h */,
+				8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */,
+				8FFC02021A28C97A00A73F2F /* DirectionsTableViewCell.h */,
+				8FFC02031A28C97A00A73F2F /* DirectionsTableViewCell.m */,
+			);
+			name = Directions;
+			sourceTree = "<group>";
+		};
 		AA0C3EBB1A1EAA1C00650ABA /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,14 +201,9 @@
 		AA70602D1A1FEC2D00944DB1 /* CreateRecipesView */ = {
 			isa = PBXGroup;
 			children = (
-				AA70602E1A1FEC4200944DB1 /* CreateTitleView.h */,
-				AA70602F1A1FEC4200944DB1 /* CreateTitleView.m */,
-				AABF04FF1A1FFC6800A677A6 /* CreateIngredientsView.h */,
-				AABF05001A1FFC6800A677A6 /* CreateIngredientsView.m */,
-				8F179EEB1A2512DE00F2B053 /* IngredientsTableViewCell.h */,
-				8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */,
-				8F179EF21A25325A00F2B053 /* IngredientsSectionHeaderView.h */,
-				8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */,
+				8FFC01FF1A28C92000A73F2F /* Title */,
+				8FFC02001A28C93200A73F2F /* Ingredients */,
+				8FFC02011A28C94800A73F2F /* Directions */,
 			);
 			name = CreateRecipesView;
 			sourceTree = "<group>";
@@ -456,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */,
 				AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */,
 				8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */,
 				AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */,
@@ -472,6 +507,7 @@
 				AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */,
 				AA0C3EC11A1EAC3D00650ABA /* RecipeObjectManager.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
+				8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
