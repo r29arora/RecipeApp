@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray *recipeObjects;
 
+- (instancetype)init;
 
 - (void)saveDataToDisk;
 - (void)loadDataFromDisk;

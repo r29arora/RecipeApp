@@ -10,6 +10,15 @@
 
 @implementation RecipeObjectManager
 
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        self.recipeObjects = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init])
@@ -54,6 +63,11 @@
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         
         _recipeObjects = [unarchiver decodeObjectForKey:kRecipeObjectsKey];
+        
+        if (!_recipeObjects)
+        {
+            _recipeObjects = [[NSMutableArray alloc] init];
+        }
         
         [unarchiver finishDecoding];
     }

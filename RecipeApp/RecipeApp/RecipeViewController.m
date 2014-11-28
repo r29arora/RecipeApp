@@ -20,7 +20,6 @@
     [super viewDidLoad];
 
     self.recipeObjectManager = [[RecipeObjectManager alloc] init];
-    [self.recipeObjectManager loadDataFromDisk];
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -33,6 +32,12 @@
     [self.recipeList registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.recipeList];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.recipeObjectManager loadDataFromDisk];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

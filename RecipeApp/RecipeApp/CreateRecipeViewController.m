@@ -15,7 +15,7 @@
 #import "UIView+Shadow.h"
 #import "CreateDirectionsView.h"
 
-@interface CreateRecipeViewController ()
+@interface CreateRecipeViewController () <CreateDirectionsViewDelegate>
 
 @end
 
@@ -51,6 +51,7 @@
     
     self.directionsView = [[CreateDirectionsView alloc] init];
     self.directionsView.backgroundColor = [UIColor whiteColor];
+    self.directionsView.delegate = self;
     [self.directionsContainerView addSubview:self.directionsView];
     
     self.currentRecipe = [[RecipeObject alloc] init];
@@ -80,6 +81,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self.ingredientsView];
 }
 
+#pragma mark - CreateDirectionsViewDelegate
+
+- (void)didFinishWritingRecipe
+{
+    [self saveCurrentRecipe];
+}
+
 #pragma mark - Saving Recipe Object
 
 - (void)saveCurrentRecipe
@@ -88,9 +96,11 @@
     
     [recipeManager loadDataFromDisk];
     
+    // Load current recipe object
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
     self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
+    self.currentRecipe.directions = self.directionsView.directionSections;
     
     // Set Data Here
     [recipeManager.recipeObjects addObject:self.currentRecipe];
@@ -99,4 +109,5 @@
     // Send Message to Delegate
     [self.delegate createRecipeViewControllerDidFinishEditing];
 }
+
 @end

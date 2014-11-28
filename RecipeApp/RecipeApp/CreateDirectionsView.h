@@ -23,6 +23,7 @@
 @property (nonatomic, strong)UITableView *directionsTableView;
 @property (nonatomic, strong)UIButton *doneButton;
 @property (nonatomic, strong) id <CreateDirectionsViewDelegate> delegate;
+@property (nonatomic, readonly) NSMutableArray *directionSections;
 
 - (instancetype)init;
 

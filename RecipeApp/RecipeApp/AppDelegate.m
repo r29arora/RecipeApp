@@ -103,6 +103,7 @@
 {
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self.bottomMenuController setNewCenterViewController:self.mainViewController WithCompletion:nil];
+    [self.mainViewController.recipeList reloadData];
 }
 
 #pragma mark - MenuViewControllerDelegate

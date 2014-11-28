@@ -17,6 +17,7 @@
         [aDecoder decodeObjectForKey:@"title"];
         [aDecoder decodeObjectForKey:@"author"];
         [aDecoder decodeObjectForKey:@"ingredients"];
+        [aDecoder decodeObjectForKey:@"directions"];
     }
     return self;
 }
@@ -26,6 +27,7 @@
     [aCoder encodeObject:_title forKey:@"title"];
     [aCoder encodeObject:_author forKey:@"author"];
     [aCoder encodeObject:_ingredients forKey:@"ingredients"];
+    [aCoder encodeObject:_directions forKey:@"directions"];
 }
 
 @end
