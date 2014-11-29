@@ -10,9 +10,9 @@
 
 @interface RecipeCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImageView *recipeImage;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) UIView *separatorView;
+@property (nonatomic, strong) UILabel *authorLabel;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

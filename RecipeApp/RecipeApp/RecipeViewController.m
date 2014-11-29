@@ -19,13 +19,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //Recipe Object Manager setup
     self.recipeObjectManager = [[RecipeObjectManager alloc] init];
     
+    // View setup
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [layout setItemSize:CGSizeMake(self.view.frame.size.width/2.0f - 15.0f , self.view.frame.size.width/2.0f - 20.0f)];
-    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 20.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 70.0f) collectionViewLayout:layout];
+    [layout setItemSize:CGSizeMake(self.view.frame.size.width - 20.0f , 150.0f)];
+    
+    // Collection View setup
+    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 25.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 75.0f) collectionViewLayout:layout];
     self.recipeList.delegate = self;
     self.recipeList.dataSource = self;
     self.recipeList.backgroundColor = [UIColor clearColor];
@@ -37,15 +41,20 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    //Reload the data source from disk when the view will appear
     [self.recipeObjectManager loadDataFromDisk];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    if (!cell)
+    {
+        cell = [[RecipeCollectionViewCell alloc] init];
+    }
     cell.backgroundColor = [UIColor whiteColor];
     cell.titleLabel.text = @"Title Label";
-    cell.descriptionLabel.text = @"description Label";
+    cell.authorLabel.text = @"Author Name";
     return cell;
 }
 
