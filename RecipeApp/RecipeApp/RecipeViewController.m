@@ -53,8 +53,11 @@
         cell = [[RecipeCollectionViewCell alloc] init];
     }
     cell.backgroundColor = [UIColor whiteColor];
-    cell.titleLabel.text = @"Title Label";
-    cell.authorLabel.text = @"Author Name";
+    
+    RecipeObject *currentRecipe = (RecipeObject *)self.recipeObjectManager.recipeObjects[indexPath.row];
+    
+    cell.titleLabel.text = currentRecipe.title;
+    cell.authorLabel.text = currentRecipe.author;
     return cell;
 }
 

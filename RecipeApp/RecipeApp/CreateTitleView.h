@@ -10,6 +10,7 @@
 
 @interface CreateTitleView : UIView <UITextViewDelegate>
 
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextView *titleLabel;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UITextView *authorLabel;

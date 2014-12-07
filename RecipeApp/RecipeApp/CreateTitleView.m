@@ -14,17 +14,20 @@
 {
     if (self = [super init])
     {
+        self.scrollView = [[UIScrollView alloc] init];
+        [self addSubview:self.scrollView];
+        
         self.titleLabel = [[UITextView alloc] init];
         self.titleLabel.text = @"Enter a Title";
         self.titleLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         self.titleLabel.scrollEnabled = NO;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.delegate = self;
-        [self addSubview:self.titleLabel];
+        [self.scrollView addSubview:self.titleLabel];
         
         self.separatorView = [[UIView alloc] init];
         self.separatorView.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:self.separatorView];
+        [self.scrollView addSubview:self.separatorView];
         
         self.authorLabel = [[UITextView alloc] init];
         self.authorLabel.text = @"By: Rajul Arora";
@@ -32,7 +35,7 @@
         self.authorLabel.font = [UIFont italicSystemFontOfSize:14.0f];
         self.authorLabel.scrollEnabled = NO;
         self.authorLabel.delegate = self;
-        [self addSubview:self.authorLabel];
+        [self.scrollView addSubview:self.authorLabel];
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
         [self addGestureRecognizer:tapGestureRecognizer];
@@ -62,6 +65,8 @@
 
 - (void)resizeViews
 {
+    self.scrollView.frame = self.bounds;
+    
     CGSize sizeThatFitsTitleLabel = [self.titleLabel sizeThatFits:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)];
     CGFloat titleLabelX = (self.frame.size.width - sizeThatFitsTitleLabel.width)/2.0f;
     CGFloat titleLabelY = (self.frame.size.height - sizeThatFitsTitleLabel.height)/2.0f - 40.0f;
@@ -83,11 +88,13 @@
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGFloat keyboardHeight = keyboardSize.height;
     CGFloat keyboardY = self.frame.size.height - keyboardHeight;
+    
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardY, 0);
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
 {
-    
+    self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
 #pragma mark - Actions
