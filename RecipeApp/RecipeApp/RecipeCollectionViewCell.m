@@ -34,11 +34,10 @@
 - (void)layoutSubviews
 {
     CGSize sizeThatFitsTitle = [self.titleLabel sizeThatFits:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)];
-    self.titleLabel.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, sizeThatFitsTitle.height);
-    
-    self.separatorView.frame = CGRectMake(30.0f, CGRectGetMaxY(self.titleLabel.frame) + 10.0f, self.frame.size.width - 60.0f, 1.0f);
-    
     CGSize sizeThatFitsAuthor = [self.authorLabel sizeThatFits:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)];
+    CGFloat separatorY = (self.frame.size.height - 1.0f)/2.0f;
+    self.separatorView.frame = CGRectMake(30.0f, separatorY, self.frame.size.width - 60.0f, 1.0f);
+    self.titleLabel.frame = CGRectMake(0.0f, CGRectGetMinY(self.separatorView.frame) - 30.0f, self.frame.size.width, sizeThatFitsTitle.height);
     self.authorLabel.frame = CGRectMake(0.0f, CGRectGetMaxY(self.separatorView.frame) + 10.0f, self.frame.size.width, sizeThatFitsAuthor.height);
 }
 

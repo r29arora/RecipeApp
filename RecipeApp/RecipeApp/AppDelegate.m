@@ -112,7 +112,8 @@
 {
     if (indexPath.row == MenuTableViewTypeNewRecipe && ![self.bottomMenuController.centerViewController isKindOfClass:[CreateRecipeViewController class]])
     {
-        
+        self.createRecipeViewController = [[CreateRecipeViewController alloc] init];
+        self.createRecipeViewController.delegate = self;
         self.createRecipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         [self.bottomMenuController setNewCenterViewController:self.createRecipeViewController WithCompletion:nil];
         return;

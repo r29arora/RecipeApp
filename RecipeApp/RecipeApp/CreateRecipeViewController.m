@@ -15,6 +15,8 @@
 #import "UIView+Shadow.h"
 #import "CreateDirectionsView.h"
 
+#import <MBProgressHUD.h>
+
 @interface CreateRecipeViewController () <CreateDirectionsViewDelegate>
 
 @end
@@ -85,10 +87,40 @@
 
 - (void)didFinishWritingRecipe
 {
-    [self saveCurrentRecipe];
+    if ([self checkInputs])
+    {
+        [self saveCurrentRecipe];
+    }
 }
 
-#pragma mark - Saving Recipe Object
+#pragma mark - Saving Current Recipe Object
+
+- (BOOL)checkInputs
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    BOOL valid = YES;
+    hud.color = [[UIColor groupTableViewBackgroundColor] colorWithAlphaComponent:0.8f];
+    hud.labelColor = [UIColor darkGrayColor];
+    hud.mode = MBProgressHUDModeText;
+
+    // Title of Recipe
+    if ([self.titleView.titleLabel.text isEqualToString:@""] ||
+        [self.titleView.titleLabel.text isEqualToString:@"Enter a Title"])
+    {
+        hud.labelText = @"Enter a Title";
+        valid = NO;
+    }
+    // Author of Recipe
+    if ([self.titleView.authorLabel.text isEqualToString:@""] ||
+        [self.titleView.authorLabel.text isEqualToString:@"By:"])
+    {
+        hud.labelText = @"Enter an author name";
+        valid = NO;
+    }
+    
+    [hud hide:YES afterDelay:1.0];
+    return valid;
+}
 
 - (void)saveCurrentRecipe
 {
