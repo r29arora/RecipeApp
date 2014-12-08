@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RecipeObjectManager.h"
 
 @interface RecipeViewController : UIViewController
 
 @property (nonatomic, strong) UICollectionView *recipeList;
-@property (nonatomic ,strong) RecipeObjectManager *recipeObjectManager;
 @property (nonatomic, strong) NSCoder *coder;
 @end

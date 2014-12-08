@@ -21,5 +21,6 @@
 @property (nonatomic, strong) NSString *author;
 
 - (void)saveDataToDiskWithCompletion:(void(^)())completion;
-
++ (NSMutableArray *)loadDataFromDiskWithCompletion:(void(^)())completion
+                               failure:(void(^)(NSError *error))failure;
 @end

@@ -13,15 +13,16 @@
 
 @interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CreateRecipeViewControllerDelegate>
 
+@property (nonatomic, strong) NSMutableArray *recipeObjects;
+
 @end
 
 @implementation RecipeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //Recipe Object Manager setup
-    self.recipeObjectManager = [[RecipeObjectManager alloc] init];
+    
+    self.recipeObjects = [[NSMutableArray alloc] init];
     
     // View setup
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -34,6 +35,8 @@
     self.recipeList.delegate = self;
     self.recipeList.dataSource = self;
     self.recipeList.backgroundColor = [UIColor clearColor];
+    self.recipeList.showsVerticalScrollIndicator = NO;
+    self.recipeList.showsHorizontalScrollIndicator = NO;
     [self.recipeList registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.recipeList];
     
@@ -43,7 +46,13 @@
 {
     [super viewWillAppear:animated];
     //Reload the data source from disk when the view will appear
-    [self.recipeObjectManager loadDataFromDisk];
+    self.recipeObjects = [RecipeObject loadDataFromDiskWithCompletion:^{
+        // completion
+        NSLog(@"success");
+    } failure:^(NSError *error) {
+        // handle Error
+        NSLog(@"Error: %@", error.localizedDescription);
+    }];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -55,16 +64,16 @@
     }
     cell.backgroundColor = [UIColor whiteColor];
     
-    RecipeObject *currentRecipe = (RecipeObject *)self.recipeObjectManager.recipeObjects[indexPath.row];
-    
+    RecipeObject *currentRecipe = self.recipeObjects[indexPath.row];
     cell.titleLabel.text = currentRecipe.title;
     cell.authorLabel.text = currentRecipe.author;
+    
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.recipeObjectManager.recipeObjects.count;
+    return self.recipeObjects.count;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -74,6 +83,13 @@
 
 - (void)createRecipeViewControllerDidFinishEditing
 {
+    self.recipeObjects = [RecipeObject loadDataFromDiskWithCompletion:^{
+        // Success
+        NSLog(@"success");
+    } failure:^(NSError *error) {
+        // Failure
+        NSLog(@"Error: %@", error.localizedDescription);
+    }];
     [self.recipeList reloadData];
 }
 
