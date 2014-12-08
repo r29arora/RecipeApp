@@ -76,9 +76,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(RecipeViewController:didSelectRecipeAtIndexPath:)])
+    if ([self.delegate respondsToSelector:@selector(recipeViewController:didSelectRecipe:AtIndexPath:)])
     {
-        [self.delegate RecipeViewController:self didSelectRecipeAtIndexPath:indexPath];
+        [self.delegate recipeViewController:self
+                            didSelectRecipe:self.recipeObjects[indexPath.row]
+                                AtIndexPath:indexPath];
     }
 }
 

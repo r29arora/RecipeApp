@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class RecipeViewController;
+@class RecipeObject;
 
 @protocol RecipeViewControllerDelegate <NSObject>
 
-- (void)RecipeViewController:(RecipeViewController *)controller didSelectRecipeAtIndexPath:(NSIndexPath *)indexPath;
+- (void)recipeViewController:(RecipeViewController *)controller
+             didSelectRecipe:(RecipeObject *)recipe
+                 AtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

@@ -12,6 +12,7 @@
 #import "RecipeViewController.h"
 #import "CreateRecipeViewController.h"
 #import "MenuBarView.h"
+#import "RecipeDetailViewController.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
+@property (nonatomic, strong) RecipeDetailViewController *detailViewController;
 @property (nonatomic, strong) RecipeViewController *mainViewController;
 @property (nonatomic, strong) CreateRecipeViewController *createRecipeViewController;
 
@@ -66,6 +68,7 @@
     self.mainViewController = [[RecipeViewController alloc] init];
     self.menuViewController = [[MenuViewController alloc] init];
     self.createRecipeViewController = [[CreateRecipeViewController alloc] init];
+    self.detailViewController = [[RecipeDetailViewController alloc] init];
     
     self.createRecipeViewController.delegate = self;
     self.menuViewController.delegate = self;
@@ -73,6 +76,7 @@
     self.bottomMenuController.delegate = self;
     
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.detailViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 100.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
     [self.bottomMenuController setupCenterView];
@@ -108,9 +112,14 @@
 }
 
 #pragma mark - RecipeViewControllerDelegate
-- (void)RecipeViewController:(RecipeViewController *)controller didSelectRecipeAtIndexPath:(NSIndexPath *)indexPath
+- (void)recipeViewController:(RecipeViewController *)controller
+             didSelectRecipe:(RecipeObject *)recipe
+                 AtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Transition to New View Controller I haven't made yet");
+    self.detailViewController = [[RecipeDetailViewController alloc] init];
+    self.detailViewController.recipeObject = recipe;
+    self.detailViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    [self.bottomMenuController setNewCenterViewController:self.detailViewController WithCompletion:nil];
 }
 
 #pragma mark - MenuViewControllerDelegate
