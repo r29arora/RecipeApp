@@ -27,6 +27,7 @@
         self.directionsLabel.textColor = [UIColor lightGrayColor];
         self.directionsLabel.font = [UIFont systemFontOfSize:20.0f];
         self.directionsLabel.textAlignment = NSTextAlignmentCenter;
+        self.directionsLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         [self addSubview:self.directionsLabel];
         
         self.separatorView = [[UIView alloc] init];
@@ -36,6 +37,7 @@
         self.directionsTableView = [[UITableView alloc] init];
         self.directionsTableView.delegate = self;
         self.directionsTableView.dataSource = self;
+        self.directionsTableView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         self.directionsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.directionsTableView.showsHorizontalScrollIndicator = NO;
         self.directionsTableView.showsVerticalScrollIndicator = NO;
@@ -56,8 +58,9 @@
         
         self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.doneButton setTitle:@"Done!" forState:UIControlStateNormal];
-        [self.doneButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        self.doneButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self.doneButton setTitleColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateNormal];
+        [self.doneButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+        self.doneButton.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:100.0f/255.0f alpha:1.0f];
         [self.doneButton addTarget:self action:@selector(didFinishEditing:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.doneButton];
 
@@ -72,6 +75,7 @@
     self.separatorView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.directionsLabel.frame) + 5.0f , self.frame.size.width - 20.0f, 1.0f);
     self.directionsTableView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.separatorView.frame) + 10.0f, self.frame.size.width - 20.0f, self.frame.size.height - CGRectGetMaxY(self.separatorView.frame) - 60.0f);
     self.doneButton.frame = CGRectMake(5.0f, CGRectGetMaxY(self.directionsTableView.frame) + 5.0f, self.frame.size.width - 10.0f, 40.0f);
+    self.doneButton.layer.cornerRadius = 2.0f;
 }
 
 #pragma mark - Actions
@@ -94,6 +98,7 @@
         cell = [[DirectionsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
+    cell.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     cell.indexPath = indexPath;
     cell.delegate = self;
     

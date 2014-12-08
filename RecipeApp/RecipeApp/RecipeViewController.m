@@ -25,13 +25,13 @@
     self.recipeObjects = [[NSMutableArray alloc] init];
     
     // View setup
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor = [UIColor colorWithRed:52.0f/255.0f green:170.0f/255.0f blue:220.0f/255.0f alpha:0.8f];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    [layout setItemSize:CGSizeMake(self.view.frame.size.width - 20.0f , 150.0f)];
+    [layout setItemSize:CGSizeMake(self.view.frame.size.width - 20.0f , 100.0f)];
     
     // Collection View setup
-    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 25.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 75.0f) collectionViewLayout:layout];
+    self.recipeList = [[UICollectionView alloc] initWithFrame:CGRectMake(10.0f, 25.0f, self.view.frame.size.width - 20.0f, self.view.frame.size.height - 65.0f) collectionViewLayout:layout];
     self.recipeList.delegate = self;
     self.recipeList.dataSource = self;
     self.recipeList.backgroundColor = [UIColor clearColor];
@@ -40,6 +40,7 @@
     [self.recipeList registerClass:[RecipeCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.recipeList];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,6 +56,8 @@
     }];
 }
 
+#pragma mark - UICollectionViewCellDelegate
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RecipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -62,13 +65,21 @@
     {
         cell = [[RecipeCollectionViewCell alloc] init];
     }
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [[UIColor groupTableViewBackgroundColor] colorWithAlphaComponent:0.3f];
     
     RecipeObject *currentRecipe = self.recipeObjects[indexPath.row];
     cell.titleLabel.text = currentRecipe.title;
     cell.authorLabel.text = currentRecipe.author;
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(RecipeViewController:didSelectRecipeAtIndexPath:)])
+    {
+        [self.delegate RecipeViewController:self didSelectRecipeAtIndexPath:indexPath];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -80,6 +91,8 @@
 {
     return 10.0f;
 }
+
+#pragma mark - CreateRecipeViewControllerDelegate
 
 - (void)createRecipeViewControllerDidFinishEditing
 {

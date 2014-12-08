@@ -26,6 +26,7 @@
         self.textField.font = [UIFont boldSystemFontOfSize:16.0f];
         self.textField.textAlignment = NSTextAlignmentNatural;
         self.textField.delegate = self;
+        self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         self.isFirstTimeEditing = YES;
         [self addSubview:self.textField];
     }

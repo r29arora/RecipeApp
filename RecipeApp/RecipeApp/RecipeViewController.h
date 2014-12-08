@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class RecipeViewController;
+
+@protocol RecipeViewControllerDelegate <NSObject>
+
+- (void)RecipeViewController:(RecipeViewController *)controller didSelectRecipeAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface RecipeViewController : UIViewController
 
 @property (nonatomic, strong) UICollectionView *recipeList;
-@property (nonatomic, strong) NSCoder *coder;
+@property (nonatomic, strong) id <RecipeViewControllerDelegate> delegate;
+
 @end

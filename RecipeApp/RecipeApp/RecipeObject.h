@@ -15,7 +15,7 @@
 #define kDataKey @"Recipe"
 #define kDataFile @"Recipe.plist"
 
-@interface RecipeObject : NSObject <NSCoding>
+@interface RecipeObject : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;

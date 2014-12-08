@@ -23,6 +23,7 @@
         self.titleLabel.scrollEnabled = NO;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.delegate = self;
+        self.titleLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2f];
         [self.scrollView addSubview:self.titleLabel];
         
         self.separatorView = [[UIView alloc] init];
@@ -32,6 +33,7 @@
         self.authorLabel = [[UITextView alloc] init];
         self.authorLabel.text = @"By: Rajul Arora";
         self.authorLabel.textColor = [UIColor darkGrayColor];
+        self.authorLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2f];
         self.authorLabel.font = [UIFont italicSystemFontOfSize:14.0f];
         self.authorLabel.scrollEnabled = NO;
         self.authorLabel.delegate = self;
@@ -73,7 +75,7 @@
     
     self.titleLabel.frame = CGRectMake(titleLabelX, titleLabelY, sizeThatFitsTitleLabel.width, sizeThatFitsTitleLabel.height);
     
-    self.separatorView.frame = CGRectMake(30.0f, CGRectGetMaxY(self.titleLabel.frame) + 10.0f, self.frame.size.width - 60.0f, 1.0f);
+    self.separatorView.frame = CGRectMake(30.0f, CGRectGetMaxY(self.titleLabel.frame) + 10.0f, self.frame.size.width - 60.0f, 0.5f);
     
     CGSize sizeThatFitsAuthorLabel = [self.authorLabel sizeThatFits:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)];
     CGFloat authorLabelX = (self.frame.size.width - sizeThatFitsAuthorLabel.width)/2.0f;
@@ -88,7 +90,7 @@
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     CGFloat keyboardHeight = keyboardSize.height;
     CGFloat keyboardY = self.frame.size.height - keyboardHeight;
-    
+    self.scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
     self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardY, 0);
 }
 

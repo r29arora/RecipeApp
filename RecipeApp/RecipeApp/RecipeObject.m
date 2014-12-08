@@ -10,21 +10,6 @@
 
 @implementation RecipeObject
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super init])
-    {
-        [aDecoder decodeObjectForKey:kTitleKey];
-        [aDecoder decodeObjectForKey:kAuthorKey];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:_title forKey:kTitleKey];
-    [aCoder encodeObject:_author forKey:kAuthorKey];
-}
 
 + (NSString *)documentDirectory
 {

@@ -16,7 +16,7 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
-@interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate>
+@interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate, RecipeViewControllerDelegate>
 
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
@@ -69,6 +69,7 @@
     
     self.createRecipeViewController.delegate = self;
     self.menuViewController.delegate = self;
+    self.mainViewController.delegate = self;
     self.bottomMenuController.delegate = self;
     
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -104,6 +105,12 @@
     self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self.bottomMenuController setNewCenterViewController:self.mainViewController WithCompletion:nil];
     [self.mainViewController.recipeList reloadData];
+}
+
+#pragma mark - RecipeViewControllerDelegate
+- (void)RecipeViewController:(RecipeViewController *)controller didSelectRecipeAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Transition to New View Controller I haven't made yet");
 }
 
 #pragma mark - MenuViewControllerDelegate

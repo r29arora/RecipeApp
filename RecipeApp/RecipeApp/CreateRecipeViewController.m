@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     self.contentContainerView = [[UIScrollView alloc] init];
-    self.contentContainerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.contentContainerView.backgroundColor = [UIColor colorWithRed:52.0f/255.0f green:170.0f/255.0f blue:220.0f/255.0f alpha:0.8f];
     self.contentContainerView.pagingEnabled = YES;
     [self.view addSubview:self.contentContainerView];
     
@@ -35,7 +35,7 @@
     [self.contentContainerView addSubview:self.titleContainerView];
     
     self.titleView = [[CreateTitleView alloc] init];
-    self.titleView.backgroundColor = [UIColor whiteColor];
+    self.titleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.titleContainerView addSubview:self.titleView];
     
     self.ingredientsContainerView = [[UIView alloc] init];
@@ -43,7 +43,7 @@
     [self.contentContainerView addSubview:self.ingredientsContainerView];
     
     self.ingredientsView = [[CreateIngredientsView alloc] init];
-    self.ingredientsView.backgroundColor = [UIColor whiteColor];
+    self.ingredientsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.ingredientsContainerView addSubview:self.ingredientsView];
     
     self.directionsContainerView = [[UIView alloc] init];
@@ -51,11 +51,13 @@
     [self.contentContainerView addSubview:self.directionsContainerView];
     
     self.directionsView = [[CreateDirectionsView alloc] init];
-    self.directionsView.backgroundColor = [UIColor whiteColor];
+    self.directionsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.directionsView.delegate = self;
     [self.directionsContainerView addSubview:self.directionsView];
     
     self.currentRecipe = [[RecipeObject alloc] init];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
 }
 
 - (void)viewWillLayoutSubviews
@@ -98,8 +100,8 @@
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     BOOL valid = YES;
-    hud.color = [[UIColor groupTableViewBackgroundColor] colorWithAlphaComponent:0.8f];
-    hud.labelColor = [UIColor darkGrayColor];
+    hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    hud.labelColor = [UIColor groupTableViewBackgroundColor];
     hud.mode = MBProgressHUDModeText;
 
     // Title of Recipe
