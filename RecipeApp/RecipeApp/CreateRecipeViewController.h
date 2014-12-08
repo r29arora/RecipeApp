@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *CreateViewControllerDidFinishEditingNotification = @"CreateViewControllerDidFinishEditingNotification";
+
 @class CreateTitleView;
 @class CreateIngredientsView;
 @class CreateDirectionsView;

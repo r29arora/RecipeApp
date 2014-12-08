@@ -11,7 +11,7 @@
 #import "RecipeObject.h"
 #import "CreateRecipeViewController.h"
 
-@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CreateRecipeViewControllerDelegate>
+@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray *recipeObjects;
 
@@ -41,6 +41,11 @@
     [self.view addSubview:self.recipeList];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didFinishCreatingRecipe:)
+                                                 name:CreateViewControllerDidFinishEditingNotification
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,18 +99,16 @@
     return 10.0f;
 }
 
-#pragma mark - CreateRecipeViewControllerDelegate
+#pragma mark - NSNotificationCenter
 
-- (void)createRecipeViewControllerDidFinishEditing
+- (void)didFinishCreatingRecipe:(NSNotification *)notification
 {
     self.recipeObjects = [RecipeObject loadDataFromDiskWithCompletion:^{
-        // Success
-        NSLog(@"success");
+        NSLog(@"Sucess");
+        [self.recipeList reloadData];
     } failure:^(NSError *error) {
-        // Failure
-        NSLog(@"Error: %@", error.localizedDescription);
+        NSLog(@"Failure");
     }];
-    [self.recipeList reloadData];
 }
 
 @end

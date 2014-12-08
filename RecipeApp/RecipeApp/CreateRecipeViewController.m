@@ -128,12 +128,16 @@
     
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
+    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
     
     [self.currentRecipe saveDataToDiskWithCompletion:^{
         if ([self.delegate respondsToSelector:@selector(createRecipeViewControllerDidFinishEditing)])
         {
             [self.delegate createRecipeViewControllerDidFinishEditing];
         }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:CreateViewControllerDidFinishEditingNotification object:nil];
+        
     }];
 }
 

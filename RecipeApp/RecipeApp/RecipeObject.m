@@ -28,9 +28,19 @@
     NSMutableDictionary *root = [[NSMutableDictionary alloc] init];
     NSMutableArray *titleData = [[NSMutableArray alloc] init];
     NSMutableArray *authorData = [[NSMutableArray alloc] init];
+    NSMutableArray *ingredientsData = [[NSMutableArray alloc] init];
+    NSMutableArray *ingredientSectionData = [[NSMutableArray alloc] init];
+    NSMutableArray *directionsData = [[NSMutableArray alloc] init];
+    NSMutableArray *directionSectionData = [[NSMutableArray alloc] init];
     
     root[kTitleKey] = titleData;
     root[kAuthorKey] = authorData;
+    
+    root[kIngredientsKey] = ingredientsData;
+    root[kIngredientSectionsKey] = ingredientSectionData;
+    
+    root[kDirectionsKey] = directionsData;
+    root[kDirectionSectionsKey] = directionSectionData;
     
     return root;
 }
@@ -53,9 +63,17 @@
     
     NSMutableArray *titleData = root[kTitleKey];
     NSMutableArray *authorData = root[kAuthorKey];
+    NSMutableArray *ingredientsData = root[kIngredientsKey];
+    NSMutableArray *ingredientSectionData = root[kIngredientSectionsKey];
+    NSMutableArray *directionsData = root[kDirectionsKey];
+    NSMutableArray *directionsSectionData = root[kDirectionSectionsKey];
     
     [titleData insertObject:self.title atIndex:titleData.count];
     [authorData insertObject:self.author atIndex:authorData.count];
+    [ingredientsData insertObject:self.ingredients atIndex:ingredientsData.count];
+    [ingredientSectionData insertObject:self.ingredientSections atIndex:ingredientSectionData.count];
+    [directionsData insertObject:self.directions atIndex:directionsData.count];
+    [directionsSectionData insertObject:self.directions atIndex:directionsSectionData.count];
     
     if ([root writeToFile:path atomically:YES])
     {
@@ -90,8 +108,17 @@
     // Need to do something with this..
     NSMutableArray *titleData = root[kTitleKey];
     NSMutableArray *authorData = root[kAuthorKey];
+    NSMutableArray *ingredientsData = root[kIngredientsKey];
+    NSMutableArray *ingredientSectionData = root[kIngredientSectionsKey];
+    NSMutableArray *directionsData = root[kDirectionsKey];
+    NSMutableArray *directionSectionData = root[kDirectionSectionsKey];
     
-    if (titleData.count != authorData.count)
+    // Invalidate if plist entries do not line up
+    if (titleData.count != authorData.count ||
+        titleData.count != ingredientsData.count ||
+        titleData.count != ingredientSectionData.count ||
+        titleData.count != directionsData.count ||
+        titleData.count != directionSectionData.count)
     {
         if (failure)
         {
@@ -107,6 +134,10 @@
         RecipeObject *recipe = [[RecipeObject alloc] init];
         recipe.title = titleData[x];
         recipe.author = authorData[x];
+        recipe.ingredients = ingredientsData[x];
+        recipe.ingredientSections = ingredientSectionData[x];
+        recipe.directions = directionsData[x];
+        recipe.directionSections = directionsData[x];
         [recipeObjects insertObject:recipe atIndex:recipeObjects.count];
     }
     

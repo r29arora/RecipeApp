@@ -41,6 +41,21 @@
     self.authorLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0f];
     self.authorLabel.textColor = [UIColor whiteColor];
     [self.contentScrollView addSubview:self.authorLabel];
+    
+    self.ingredientsTitleLabel = [[UILabel alloc] init];
+    self.ingredientsTitleLabel.textAlignment = NSTextAlignmentLeft;
+    self.ingredientsTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0f];
+    self.ingredientsTitleLabel.textColor = [UIColor whiteColor];
+    self.ingredientsTitleLabel.text = @"Ingredients";
+    [self.contentScrollView addSubview:self.ingredientsTitleLabel];
+    
+    self.ingredientsLabel = [[UILabel alloc] init];
+    self.ingredientsLabel.textAlignment = NSTextAlignmentLeft;
+    self.ingredientsLabel.textColor = [UIColor whiteColor];
+    self.ingredientsLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0f];
+    self.ingredientsLabel.text = [self parseIngredientsIntoString];
+    self.ingredientsLabel.numberOfLines = 0;
+    [self.contentScrollView addSubview:self.ingredientsLabel];
 }
 
 
@@ -48,14 +63,46 @@
 {
     [super viewWillLayoutSubviews];
     
+    // Title Label
     CGSize sizeThatFitsTitleLabel = [self.titleLabel sizeThatFits:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX)];
     
     self.titleLabel.frame = CGRectMake(0.0f, 20.0f, self.contentScrollView.frame.size.width, sizeThatFitsTitleLabel.height);
+    
+    // Separator View
     self.separatorView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.titleLabel.frame) + 5.0f, self.contentScrollView.frame.size.width - 20.0f, 0.5f);
 
+    // Author Label
     CGSize sizeThatFitsAuthorLabel = [self.authorLabel sizeThatFits:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX)];
     self.authorLabel.frame = CGRectMake(0.0f, CGRectGetMaxY(self.separatorView.frame) + 10.0f, self.contentScrollView.frame.size.width, sizeThatFitsAuthorLabel.height);
-    self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(self.authorLabel.frame));
+    
+    // Ingredients Title Label
+    CGSize sizeThatFitsIngredientsTitleLabel = [self.ingredientsTitleLabel sizeThatFits:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX)];
+    self.ingredientsTitleLabel.frame = CGRectMake(10.0f, CGRectGetMaxY(self.authorLabel.frame) + 10.0f, sizeThatFitsIngredientsTitleLabel.width, sizeThatFitsIngredientsTitleLabel.height);
+    
+    CGSize sizeThatFitsIngredients = [self.ingredientsLabel sizeThatFits:CGSizeMake(self.view.frame.size.width - 20.0f, CGFLOAT_MAX)];
+    self.ingredientsLabel.frame = CGRectMake(10.0f, CGRectGetMaxY(self.ingredientsTitleLabel.frame) + 5.0f, self.view.frame.size.width - 20.0f, sizeThatFitsIngredients.height);
+    
+    // Scroll View Content Size (always at the bottom)
+    self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(self.ingredientsLabel.frame));
+}
+
+- (NSString *)parseIngredientsIntoString
+{
+    NSMutableString *mutableString = [[NSMutableString alloc] init];
+    for (NSUInteger x = 0; x < self.recipeObject.ingredients.count; x++)
+    {
+        NSString *sectionTitle = self.recipeObject.ingredientSections[x];
+        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+        
+        NSMutableArray *currentSection = self.recipeObject.ingredients[x];
+        for (NSUInteger y = 0; y < currentSection.count; y++)
+        {
+            NSString *currentIngredient = currentSection[y];
+            [mutableString insertString:[currentIngredient stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+        }
+    }
+    
+    return [mutableString copy];
 }
 
 @end

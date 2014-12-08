@@ -15,8 +15,14 @@
 @property (nonatomic, strong) RecipeObject *recipeObject;
 
 @property (nonatomic, strong) UIScrollView *contentScrollView;
+
+// Title
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UILabel *authorLabel;
+
+// Ingredients
+@property (nonatomic, strong) UILabel *ingredientsTitleLabel;
+@property (nonatomic, strong) UILabel *ingredientsLabel;
 
 @end
