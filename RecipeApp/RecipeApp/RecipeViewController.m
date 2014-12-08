@@ -9,8 +9,9 @@
 #import "RecipeViewController.h"
 #import "RecipeCollectionViewCell.h"
 #import "RecipeObject.h"
+#import "CreateRecipeViewController.h"
 
-@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface RecipeViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CreateRecipeViewControllerDelegate>
 
 @end
 
@@ -69,6 +70,11 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     return 10.0f;
+}
+
+- (void)createRecipeViewControllerDidFinishEditing
+{
+    [self.recipeList reloadData];
 }
 
 @end

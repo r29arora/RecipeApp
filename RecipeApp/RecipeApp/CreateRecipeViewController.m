@@ -9,7 +9,6 @@
 #import "CreateRecipeViewController.h"
 #import "BottomMenuController.h"
 #import "RecipeObject.h"
-#import "RecipeObjectManager.h"
 #import "CreateTitleView.h"
 #import "CreateIngredientsView.h"
 #import "UIView+Shadow.h"
@@ -124,22 +123,16 @@
 
 - (void)saveCurrentRecipe
 {
-    RecipeObjectManager *recipeManager = [[RecipeObjectManager alloc] init];
     
-    [recipeManager loadDataFromDisk];
-    
-    // Load current recipe object
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
-    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
-    self.currentRecipe.directions = self.directionsView.directionSections;
     
-    // Set Data Here
-    [recipeManager.recipeObjects addObject:self.currentRecipe];
-    [recipeManager saveDataToDisk];
-    
-    // Send Message to Delegate
-    [self.delegate createRecipeViewControllerDidFinishEditing];
+    [self.currentRecipe saveDataToDiskWithCompletion:^{
+        if ([self.delegate respondsToSelector:@selector(createRecipeViewControllerDidFinishEditing)])
+        {
+            [self.delegate createRecipeViewControllerDidFinishEditing];
+        }
+    }];
 }
 
 @end

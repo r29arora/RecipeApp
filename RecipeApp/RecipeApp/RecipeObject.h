@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#define kRootKey @"root"
+#define kTitleKey @"Title"
+#define kAuthorKey @"Author"
+
+#define kDataKey @"Recipe"
+#define kDataFile @"Recipe.plist"
+
 @interface RecipeObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSMutableArray *ingredients;
-@property (nonatomic, strong) NSMutableArray *directions;
+
+- (void)saveDataToDiskWithCompletion:(void(^)())completion;
 
 @end
