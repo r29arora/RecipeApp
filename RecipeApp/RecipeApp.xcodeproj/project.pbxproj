@@ -11,6 +11,7 @@
 		8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */; };
 		8F179EF11A25131C00F2B053 /* RATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF01A25131C00F2B053 /* RATextField.m */; };
 		8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */; };
+		8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */; };
 		8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */; };
 		8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */; };
 		8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC02031A28C97A00A73F2F /* DirectionsTableViewCell.m */; };
@@ -49,6 +50,8 @@
 		8F179EF01A25131C00F2B053 /* RATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATextField.m; sourceTree = "<group>"; };
 		8F179EF21A25325A00F2B053 /* IngredientsSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsSectionHeaderView.h; sourceTree = "<group>"; };
 		8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsSectionHeaderView.m; sourceTree = "<group>"; };
+		8FBA427C1A373D8E00A3A3D4 /* DirectionsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsHeaderView.h; sourceTree = "<group>"; };
+		8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsHeaderView.m; sourceTree = "<group>"; };
 		8FC12BE81A3643A000CD6B03 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
 		8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		8FFC01FC1A28C61E00A73F2F /* CreateDirectionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDirectionsView.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */,
 				8FFC02021A28C97A00A73F2F /* DirectionsTableViewCell.h */,
 				8FFC02031A28C97A00A73F2F /* DirectionsTableViewCell.m */,
+				8FBA427C1A373D8E00A3A3D4 /* DirectionsHeaderView.h */,
+				8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */,
 			);
 			name = Directions;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */,
+				8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */,
 				8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
 			);

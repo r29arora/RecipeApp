@@ -112,10 +112,22 @@
         valid = NO;
     }
     // Author of Recipe
-    if ([self.titleView.authorLabel.text isEqualToString:@""] ||
+    else if ([self.titleView.authorLabel.text isEqualToString:@""] ||
         [self.titleView.authorLabel.text isEqualToString:@"By:"])
     {
         hud.labelText = @"Enter an author name";
+        valid = NO;
+    }
+    else if (!self.ingredientsView.ingredientSections ||
+             !self.ingredientsView.sectionHeaders)
+    {
+        hud.labelText = @"Enter Ingredients";
+        valid = NO;
+    }
+    else if (!self.directionsView.directionSections ||
+             !self.directionsView.directionSectionHeaders)
+    {
+        hud.labelText = @"Enter Directions";
         valid = NO;
     }
     
@@ -129,6 +141,9 @@
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
     self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
+    self.currentRecipe.ingredientSections = self.ingredientsView.sectionHeaders;
+    self.currentRecipe.directions = self.directionsView.directionSections;
+    self.currentRecipe.directionSections = self.directionsView.directionSectionHeaders;
     
     [self.currentRecipe saveDataToDiskWithCompletion:^{
         if ([self.delegate respondsToSelector:@selector(createRecipeViewControllerDidFinishEditing)])

@@ -73,7 +73,7 @@
     [ingredientsData insertObject:self.ingredients atIndex:ingredientsData.count];
     [ingredientSectionData insertObject:self.ingredientSections atIndex:ingredientSectionData.count];
     [directionsData insertObject:self.directions atIndex:directionsData.count];
-    [directionsSectionData insertObject:self.directions atIndex:directionsSectionData.count];
+    [directionsSectionData insertObject:self.directionSections atIndex:directionsSectionData.count];
     
     if ([root writeToFile:path atomically:YES])
     {
@@ -137,7 +137,7 @@
         recipe.ingredients = ingredientsData[x];
         recipe.ingredientSections = ingredientSectionData[x];
         recipe.directions = directionsData[x];
-        recipe.directionSections = directionsData[x];
+        recipe.directionSections = directionSectionData[x];
         [recipeObjects insertObject:recipe atIndex:recipeObjects.count];
     }
     

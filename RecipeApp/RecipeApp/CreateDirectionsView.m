@@ -8,8 +8,10 @@
 
 #import "CreateDirectionsView.h"
 #import "DirectionsTableViewCell.h"
+#import "DirectionsHeaderView.h"
+#import "RATextField.h"
 
-@interface CreateDirectionsView () <UITableViewDelegate, UITableViewDataSource, DirectionsTableViewCellDelegate>
+@interface CreateDirectionsView () <UITableViewDelegate, UITableViewDataSource, DirectionsTableViewCellDelegate, DirectionsHeaderViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *directionSections;
 @property (nonatomic, strong) NSMutableArray *directionSectionHeaders;
@@ -55,6 +57,8 @@
         [directionSet addObject:@"three"];
         
         [self.directionSections addObject:directionSet];
+        
+        [self.directionSectionHeaders addObject:@"Section Title"];
         
         self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.doneButton setTitle:@"Done!" forState:UIControlStateNormal];
@@ -152,6 +156,22 @@
     return 40.0f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // Section Header Data
+    NSString *sectionTitle = self.directionSectionHeaders[section];
+    DirectionsHeaderView *directionsHeader = [[DirectionsHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40.0f) sectionNumber:section];
+    directionsHeader.delegate = self;
+    directionsHeader.textField.text = sectionTitle;
+    directionsHeader.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
+    return directionsHeader;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.0f;
+}
+
 #pragma mark - DirectionsTableViewCellDelegate
 
 - (void)directionsTableViewCell:(DirectionsTableViewCell *)cell didTapAddDirectionButtonAtIndexPath:(NSIndexPath *)indexPath
@@ -168,6 +188,7 @@
     //Add new Section
     NSMutableArray *newDirectionsArray = [[NSMutableArray alloc] init];
     [self.directionSections insertObject:newDirectionsArray atIndex:indexPath.section+1];
+    [self.directionSectionHeaders insertObject:@"New Section" atIndex:indexPath.section +1];
     [self.directionsTableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section+1] withRowAnimation:UITableViewRowAnimationBottom];
         [self.directionsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:newDirectionsArray.count+1 inSection:indexPath.section + 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
@@ -206,6 +227,14 @@
             }
         }
     }
+}
+
+#pragma mark - DirectionsHeaderViewDelegate
+
+- (void)directionsHeaderView:(DirectionsHeaderView *)headerView didUpdateHeaderViewInSection:(NSUInteger)sectionNumber
+{
+    // Update array for headers
+    self.directionSectionHeaders[sectionNumber] = headerView.textField.text;
 }
 
 @end

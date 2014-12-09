@@ -25,4 +25,8 @@
 @property (nonatomic, strong) UILabel *ingredientsTitleLabel;
 @property (nonatomic, strong) UILabel *ingredientsLabel;
 
+// Directions
+@property (nonatomic, strong) UILabel *directionsTitleLabel;
+@property (nonatomic, strong) UILabel *directionsLabel;
+
 @end

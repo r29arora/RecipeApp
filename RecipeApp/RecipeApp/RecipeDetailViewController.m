@@ -56,6 +56,21 @@
     self.ingredientsLabel.text = [self parseIngredientsIntoString];
     self.ingredientsLabel.numberOfLines = 0;
     [self.contentScrollView addSubview:self.ingredientsLabel];
+    
+    self.directionsTitleLabel = [[UILabel alloc] init];
+    self.directionsTitleLabel.textAlignment = NSTextAlignmentLeft;
+    self.directionsTitleLabel.font = [UIFont fontWithName:@"Helvetiva-Bold" size:16.0f];
+    self.directionsTitleLabel.textColor = [UIColor whiteColor];
+    self.directionsTitleLabel.text = @"Directions";
+    [self.contentScrollView addSubview:self.directionsTitleLabel];
+    
+    self.directionsLabel = [[UILabel alloc] init];
+    self.directionsLabel.textAlignment = NSTextAlignmentLeft;
+    self.directionsLabel.textColor = [UIColor whiteColor];
+    self.directionsLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0f];
+    self.directionsLabel.numberOfLines = 0;
+    self.directionsLabel.text = [self parseDirectionsIntoString];
+    [self.contentScrollView addSubview:self.directionsLabel];
 }
 
 
@@ -82,8 +97,15 @@
     CGSize sizeThatFitsIngredients = [self.ingredientsLabel sizeThatFits:CGSizeMake(self.view.frame.size.width - 20.0f, CGFLOAT_MAX)];
     self.ingredientsLabel.frame = CGRectMake(10.0f, CGRectGetMaxY(self.ingredientsTitleLabel.frame) + 5.0f, self.view.frame.size.width - 20.0f, sizeThatFitsIngredients.height);
     
+    CGSize sizeThatFitsDirectionTitleLabel = [self.directionsTitleLabel sizeThatFits:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX)];
+    self.directionsTitleLabel.frame = CGRectMake(10.0f, CGRectGetMaxY(self.ingredientsLabel.frame), self.view.frame.size.width - 20.0f, sizeThatFitsDirectionTitleLabel.height);
+    
+    CGSize sizeThatFitsDirectionsLabel = [self.directionsLabel sizeThatFits:CGSizeMake(self.view.frame.size.width, CGFLOAT_MAX)];
+    
+    self.directionsLabel.frame = CGRectMake(10.0f, CGRectGetMaxY(self.directionsTitleLabel.frame), self.view.frame.size.width- 20.0f, sizeThatFitsDirectionsLabel.height);
+    
     // Scroll View Content Size (always at the bottom)
-    self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(self.ingredientsLabel.frame));
+    self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(self.directionsLabel.frame));
 }
 
 - (NSString *)parseIngredientsIntoString
@@ -92,7 +114,7 @@
     for (NSUInteger x = 0; x < self.recipeObject.ingredients.count; x++)
     {
         NSString *sectionTitle = self.recipeObject.ingredientSections[x];
-        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n\n"] atIndex:[mutableString length]];
         
         NSMutableArray *currentSection = self.recipeObject.ingredients[x];
         for (NSUInteger y = 0; y < currentSection.count; y++)
@@ -102,6 +124,23 @@
         }
     }
     
+    return [mutableString copy];
+}
+
+- (NSString *)parseDirectionsIntoString
+{
+    NSMutableString *mutableString = [[NSMutableString alloc] init];
+    for (NSUInteger x = 0; x < self.recipeObject.directions.count; x++)
+    {
+        NSString *sectionTitle = self.recipeObject.directionSections[x];
+        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n\n"] atIndex:[mutableString length]];
+        NSMutableArray *currentSection = self.recipeObject.directions[x];
+        for (NSUInteger y =0; y < currentSection.count; y++)
+        {
+            NSString *currentDirection = currentSection[y];
+            [mutableString insertString:[currentDirection stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+        }
+    }
     return [mutableString copy];
 }
 
