@@ -14,6 +14,7 @@
 @protocol  IngredientsSectionHeaderViewDelegate <NSObject>
 
 - (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didUpdateHeaderViewInSection:(NSInteger)section;
+- (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didDeleteHeaderViewInSection:(NSInteger)section;
 
 @end
 

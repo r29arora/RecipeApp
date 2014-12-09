@@ -237,4 +237,14 @@
     self.sectionHeaders[section] = headerView.textField.text;
 }
 
+- (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didDeleteHeaderViewInSection:(NSInteger)section
+{
+    if (self.sectionHeaders.count > 1)
+    {
+        [self.sectionHeaders removeObjectAtIndex:section];
+        [self.ingredientSections removeObjectAtIndex:section];
+        [self.ingredientsTableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationBottom];
+    }
+}
+
 @end
