@@ -237,4 +237,15 @@
     self.directionSectionHeaders[sectionNumber] = headerView.textField.text;
 }
 
+- (void)directionsHeaderView:(DirectionsHeaderView *)headerView didTapDeleteHeaderViewInSection:(NSUInteger)sectionNumber
+{
+    if (self.directionSectionHeaders.count > 1)
+    {
+        [self.directionSectionHeaders removeObjectAtIndex:sectionNumber];
+        [self.directionSections removeObjectAtIndex:sectionNumber];
+        [self.directionsTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionNumber] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.directionsTableView reloadData];
+    }
+}
+
 @end

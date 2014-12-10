@@ -244,6 +244,7 @@
         [self.sectionHeaders removeObjectAtIndex:section];
         [self.ingredientSections removeObjectAtIndex:section];
         [self.ingredientsTableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.ingredientsTableView reloadData];
     }
 }
 

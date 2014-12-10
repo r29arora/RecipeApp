@@ -14,6 +14,7 @@
 @protocol DirectionsHeaderViewDelegate <NSObject>
 
 - (void)directionsHeaderView:(DirectionsHeaderView *)headerView didUpdateHeaderViewInSection:(NSUInteger)sectionNumber;
+- (void)directionsHeaderView:(DirectionsHeaderView *)headerView didTapDeleteHeaderViewInSection:(NSUInteger)sectionNumber;
 
 @end
 
