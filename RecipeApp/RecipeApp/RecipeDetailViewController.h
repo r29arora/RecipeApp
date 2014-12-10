@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class RecipeObject;
+@class TTTAttributedLabel;
 
 @interface RecipeDetailViewController : UIViewController
 
@@ -23,10 +24,10 @@
 
 // Ingredients
 @property (nonatomic, strong) UILabel *ingredientsTitleLabel;
-@property (nonatomic, strong) UILabel *ingredientsLabel;
+@property (nonatomic, strong) TTTAttributedLabel *ingredientsLabel;
 
 // Directions
 @property (nonatomic, strong) UILabel *directionsTitleLabel;
-@property (nonatomic, strong) UILabel *directionsLabel;
+@property (nonatomic, strong) TTTAttributedLabel *directionsLabel;
 
 @end

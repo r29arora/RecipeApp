@@ -8,6 +8,9 @@
 
 #import "RecipeDetailViewController.h"
 #import "RecipeObject.h"
+#import "TTTAttributedLabel.h"
+#import "NSAttributedString+CustomStrings.h"
+#import "NSAttributedString+Utils.h"
 
 @interface RecipeDetailViewController ()
 
@@ -44,30 +47,26 @@
     
     self.ingredientsTitleLabel = [[UILabel alloc] init];
     self.ingredientsTitleLabel.textAlignment = NSTextAlignmentLeft;
-    self.ingredientsTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16.0f];
+    self.ingredientsTitleLabel.font = [UIFont fontWithName:kHelveticaNeueUI_Bold size:16.0f];
     self.ingredientsTitleLabel.textColor = [UIColor whiteColor];
     self.ingredientsTitleLabel.text = @"Ingredients";
     [self.contentScrollView addSubview:self.ingredientsTitleLabel];
     
-    self.ingredientsLabel = [[UILabel alloc] init];
+    self.ingredientsLabel = [[TTTAttributedLabel alloc] init];
     self.ingredientsLabel.textAlignment = NSTextAlignmentLeft;
-    self.ingredientsLabel.textColor = [UIColor whiteColor];
-    self.ingredientsLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0f];
     self.ingredientsLabel.text = [self parseIngredientsIntoString];
     self.ingredientsLabel.numberOfLines = 0;
     [self.contentScrollView addSubview:self.ingredientsLabel];
     
     self.directionsTitleLabel = [[UILabel alloc] init];
     self.directionsTitleLabel.textAlignment = NSTextAlignmentLeft;
-    self.directionsTitleLabel.font = [UIFont fontWithName:@"Helvetiva-Bold" size:16.0f];
+    self.directionsTitleLabel.font = [UIFont fontWithName:kHelveticaNeueUI_Bold size:16.0f];
     self.directionsTitleLabel.textColor = [UIColor whiteColor];
     self.directionsTitleLabel.text = @"Directions";
     [self.contentScrollView addSubview:self.directionsTitleLabel];
     
-    self.directionsLabel = [[UILabel alloc] init];
+    self.directionsLabel = [[TTTAttributedLabel alloc] init];
     self.directionsLabel.textAlignment = NSTextAlignmentLeft;
-    self.directionsLabel.textColor = [UIColor whiteColor];
-    self.directionsLabel.font = [UIFont fontWithName:@"Helvetica" size:16.0f];
     self.directionsLabel.numberOfLines = 0;
     self.directionsLabel.text = [self parseDirectionsIntoString];
     [self.contentScrollView addSubview:self.directionsLabel];
@@ -108,40 +107,49 @@
     self.contentScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(self.directionsLabel.frame));
 }
 
-- (NSString *)parseIngredientsIntoString
+- (NSAttributedString *)parseIngredientsIntoString
 {
-    NSMutableString *mutableString = [[NSMutableString alloc] init];
+    // Iterate through every ingredient section
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
     for (NSUInteger x = 0; x < self.recipeObject.ingredients.count; x++)
     {
-        NSString *sectionTitle = self.recipeObject.ingredientSections[x];
-        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n\n"] atIndex:[mutableString length]];
+        NSString *sectionTitle = [NSString stringWithFormat:@"%@ \n" , self.recipeObject.ingredientSections[x]];
+        [mutableAttributedString insertAttributedString:[NSAttributedString underlinedString:sectionTitle] atIndex:[mutableAttributedString length]];
         
+        // Iterate through every ingredient
         NSMutableArray *currentSection = self.recipeObject.ingredients[x];
         for (NSUInteger y = 0; y < currentSection.count; y++)
         {
-            NSString *currentIngredient = currentSection[y];
-            [mutableString insertString:[currentIngredient stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+            NSString *currentIngredient = [NSString stringWithFormat:@"- %@ \n",currentSection[y]];
+            NSAttributedString *ingredientAttributedString = [[NSAttributedString alloc] initWithString:currentIngredient];
+            [mutableAttributedString insertAttributedString:ingredientAttributedString atIndex:[mutableAttributedString length]];
         }
     }
-    
-    return [mutableString copy];
+    // Set Text attributes
+    [mutableAttributedString setTextColor:[UIColor whiteColor]];
+    [mutableAttributedString setFont:[UIFont fontWithName:kHelveticaNeueUI size:16.0f]];
+    return [mutableAttributedString copy];
 }
 
 - (NSString *)parseDirectionsIntoString
 {
-    NSMutableString *mutableString = [[NSMutableString alloc] init];
+    NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] init];
     for (NSUInteger x = 0; x < self.recipeObject.directions.count; x++)
     {
-        NSString *sectionTitle = self.recipeObject.directionSections[x];
-        [mutableString insertString:[sectionTitle stringByAppendingString:@"\n\n"] atIndex:[mutableString length]];
+        NSString *sectionTitle = [NSString stringWithFormat:@"%@ \n",  self.recipeObject.directionSections[x]];
+        [mutableAttributedString insertAttributedString:[NSAttributedString underlinedString:sectionTitle] atIndex:[mutableAttributedString length]];
+
         NSMutableArray *currentSection = self.recipeObject.directions[x];
-        for (NSUInteger y =0; y < currentSection.count; y++)
+        for (NSUInteger y = 0; y < currentSection.count; y++)
         {
-            NSString *currentDirection = currentSection[y];
-            [mutableString insertString:[currentDirection stringByAppendingString:@"\n"] atIndex:[mutableString length]];
+            NSString *currentDirection = [NSString stringWithFormat:@"Step %lu: %@ \n" ,y+1,currentSection[y]];
+            NSAttributedString *attributedDirection = [[NSAttributedString alloc] initWithString:currentDirection];
+            [mutableAttributedString insertAttributedString:attributedDirection atIndex:[mutableAttributedString length]];
         }
     }
-    return [mutableString copy];
+    [mutableAttributedString setTextColor:[UIColor whiteColor]];
+    [mutableAttributedString setFont:[UIFont fontWithName:kHelveticaNeueUI size:16.0f]];
+    return [mutableAttributedString copy];
 }
 
 @end

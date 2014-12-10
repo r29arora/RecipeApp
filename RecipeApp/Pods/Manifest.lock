@@ -1,13 +1,16 @@
 PODS:
   - MBAutoGrowingTextView (0.1.0)
   - MBProgressHUD (0.9)
+  - TTTAttributedLabel (1.12.0)
 
 DEPENDENCIES:
   - MBAutoGrowingTextView
   - MBProgressHUD
+  - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   MBAutoGrowingTextView: 17b0cc9b733670bca80980ba290107328e987ef1
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  TTTAttributedLabel: 9825f9b6c8f1c01939fa26827e59b7586483a45b
 
 COCOAPODS: 0.34.4

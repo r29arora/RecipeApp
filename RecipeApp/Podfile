@@ -4,3 +4,4 @@
 
 pod 'MBAutoGrowingTextView'
 pod 'MBProgressHUD'
+pod 'TTTAttributedLabel'

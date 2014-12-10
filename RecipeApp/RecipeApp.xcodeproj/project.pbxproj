@@ -11,6 +11,8 @@
 		8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EEC1A2512DE00F2B053 /* IngredientsTableViewCell.m */; };
 		8F179EF11A25131C00F2B053 /* RATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF01A25131C00F2B053 /* RATextField.m */; };
 		8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */; };
+		8FB0DD731A38983A00F2935F /* NSAttributedString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */; };
+		8FB0DD771A389D2100F2935F /* NSAttributedString+CustomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */; };
 		8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */; };
 		8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */; };
 		8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */; };
@@ -50,6 +52,10 @@
 		8F179EF01A25131C00F2B053 /* RATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATextField.m; sourceTree = "<group>"; };
 		8F179EF21A25325A00F2B053 /* IngredientsSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IngredientsSectionHeaderView.h; sourceTree = "<group>"; };
 		8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IngredientsSectionHeaderView.m; sourceTree = "<group>"; };
+		8FB0DD711A38983A00F2935F /* NSAttributedString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Utils.h"; sourceTree = "<group>"; };
+		8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Utils.m"; sourceTree = "<group>"; };
+		8FB0DD751A389D2100F2935F /* NSAttributedString+CustomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CustomStrings.h"; sourceTree = "<group>"; };
+		8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CustomStrings.m"; sourceTree = "<group>"; };
 		8FBA427C1A373D8E00A3A3D4 /* DirectionsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsHeaderView.h; sourceTree = "<group>"; };
 		8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsHeaderView.m; sourceTree = "<group>"; };
 		8FC12BE81A3643A000CD6B03 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
@@ -129,6 +135,26 @@
 				8F179EF01A25131C00F2B053 /* RATextField.m */,
 			);
 			name = RATextField;
+			sourceTree = "<group>";
+		};
+		8FB0DD6F1A3896AC00F2935F /* UIView+Shadow */ = {
+			isa = PBXGroup;
+			children = (
+				AABF04FC1A1FF68E00A677A6 /* UIView+Shadow.h */,
+				AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */,
+			);
+			name = "UIView+Shadow";
+			sourceTree = "<group>";
+		};
+		8FB0DD701A3897BD00F2935F /* NSAttributedString+Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8FB0DD711A38983A00F2935F /* NSAttributedString+Utils.h */,
+				8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */,
+				8FB0DD751A389D2100F2935F /* NSAttributedString+CustomStrings.h */,
+				8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */,
+			);
+			name = "NSAttributedString+Utils";
 			sourceTree = "<group>";
 		};
 		8FFC01FF1A28C92000A73F2F /* Title */ = {
@@ -252,8 +278,8 @@
 		AABF04FB1A1FF67800A677A6 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				AABF04FC1A1FF68E00A677A6 /* UIView+Shadow.h */,
-				AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */,
+				8FB0DD701A3897BD00F2935F /* NSAttributedString+Utils */,
+				8FB0DD6F1A3896AC00F2935F /* UIView+Shadow */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -498,6 +524,7 @@
 				8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */,
 				AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */,
 				8F179EED1A2512DE00F2B053 /* IngredientsTableViewCell.m in Sources */,
+				8FB0DD771A389D2100F2935F /* NSAttributedString+CustomStrings.m in Sources */,
 				AAEF76C41A1D5A2B005A92B1 /* AppDelegate.m in Sources */,
 				AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */,
 				8F179EF11A25131C00F2B053 /* RATextField.m in Sources */,
@@ -509,6 +536,7 @@
 				AA71E9611A1E3580005626A5 /* MenuTableViewCell.m in Sources */,
 				AA71E96E1A1E756B005626A5 /* RecipeCollectionViewCell.m in Sources */,
 				AAEF76EB1A1D6061005A92B1 /* BottomMenuController.m in Sources */,
+				8FB0DD731A38983A00F2935F /* NSAttributedString+Utils.m in Sources */,
 				AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */,
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */,
