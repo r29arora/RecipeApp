@@ -13,17 +13,21 @@
 #import "CreateRecipeViewController.h"
 #import "MenuBarView.h"
 #import "RecipeDetailViewController.h"
+#import "Constants.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 
 @interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate, RecipeViewControllerDelegate>
 
+// IPhone View Controllers
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
 @property (nonatomic, strong) RecipeDetailViewController *detailViewController;
 @property (nonatomic, strong) RecipeViewController *mainViewController;
 @property (nonatomic, strong) CreateRecipeViewController *createRecipeViewController;
+
+// IPad View Controllers
 
 @end
 
@@ -33,7 +37,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self setupBottomMenuController];
+    
+
+    if (IS_IPAD)
+    {
+        // Load New Menu view Controller
+    }
+    else
+    {
+        [self setupBottomMenuController];
+    }
     
     return YES;
 }

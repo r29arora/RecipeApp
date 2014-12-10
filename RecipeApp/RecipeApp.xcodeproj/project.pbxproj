@@ -13,6 +13,7 @@
 		8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */; };
 		8FB0DD731A38983A00F2935F /* NSAttributedString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */; };
 		8FB0DD771A389D2100F2935F /* NSAttributedString+CustomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */; };
+		8FB0DD7E1A3906B900F2935F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */; };
 		8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */; };
 		8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */; };
 		8FFC01FE1A28C61E00A73F2F /* CreateDirectionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC01FD1A28C61E00A73F2F /* CreateDirectionsView.m */; };
@@ -56,6 +57,9 @@
 		8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Utils.m"; sourceTree = "<group>"; };
 		8FB0DD751A389D2100F2935F /* NSAttributedString+CustomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CustomStrings.h"; sourceTree = "<group>"; };
 		8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CustomStrings.m"; sourceTree = "<group>"; };
+		8FB0DD781A3904EE00F2935F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		8FB0DD7C1A3906B900F2935F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		8FBA427C1A373D8E00A3A3D4 /* DirectionsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsHeaderView.h; sourceTree = "<group>"; };
 		8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionsHeaderView.m; sourceTree = "<group>"; };
 		8FC12BE81A3643A000CD6B03 /* RecipeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
@@ -157,6 +161,25 @@
 			name = "NSAttributedString+Utils";
 			sourceTree = "<group>";
 		};
+		8FB0DD7A1A3905B400F2935F /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				AA70602C1A1F889200944DB1 /* View Recipes */,
+				AA70602B1A1F887F00944DB1 /* Create Recipes */,
+				AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */,
+			);
+			path = iPhone;
+			sourceTree = "<group>";
+		};
+		8FB0DD7B1A39069200F2935F /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				8FB0DD7C1A3906B900F2935F /* BaseNavigationController.h */,
+				8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
 		8FFC01FF1A28C92000A73F2F /* Title */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +239,7 @@
 				AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */,
 			);
 			name = "Create Recipes";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		AA70602C1A1F889200944DB1 /* View Recipes */ = {
@@ -227,6 +251,7 @@
 				8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */,
 			);
 			name = "View Recipes";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		AA70602D1A1FEC2D00944DB1 /* CreateRecipesView */ = {
@@ -325,6 +350,7 @@
 			children = (
 				AAEF76BF1A1D5A2B005A92B1 /* Info.plist */,
 				AAEF76C01A1D5A2B005A92B1 /* main.m */,
+				8FB0DD781A3904EE00F2935F /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -349,9 +375,8 @@
 		AAEF76E41A1D5A33005A92B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA70602C1A1F889200944DB1 /* View Recipes */,
-				AA70602B1A1F887F00944DB1 /* Create Recipes */,
-				AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */,
+				8FB0DD7B1A39069200F2935F /* iPad */,
+				8FB0DD7A1A3905B400F2935F /* iPhone */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +390,7 @@
 				AAEF76EA1A1D6061005A92B1 /* BottomMenuController.m */,
 			);
 			name = BottomMenuController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		AAEF76F01A1D81D5005A92B1 /* Views */ = {
@@ -542,6 +568,7 @@
 				8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */,
 				8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */,
 				8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */,
+				8FB0DD7E1A3906B900F2935F /* BaseNavigationController.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,7 +689,7 @@
 				INFOPLIST_FILE = RecipeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -674,7 +701,7 @@
 				INFOPLIST_FILE = RecipeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
