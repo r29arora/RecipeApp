@@ -15,4 +15,6 @@
 
 - (instancetype)initWithDetailViewController:(UIViewController *)detailViewController sideViewController:(UIViewController *)sideViewController;
 
+- (void)setupViews;
+- (void)replaceDetailViewController:(UIViewController *)detailViewController completion:(void(^)())completion;
 @end

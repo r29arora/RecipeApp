@@ -48,6 +48,36 @@
     [self.sideViewController didMoveToParentViewController:self];
 }
 
+- (void)setupViews
+{
+    [self setupDetailView];
+    [self setupSideView];
+}
+
+#pragma mark - Replace Detail View
+
+- (void)replaceDetailViewController:(UIViewController *)detailViewController completion:(void(^)())completion
+{
+    if (self.detailViewController == detailViewController)
+    {
+        if (completion) {completion();}
+        return;
+    }
+    else
+    {
+        if (self.detailViewController)
+        {
+            [self.detailViewController removeFromParentViewController];
+            [self.detailViewController.view removeFromSuperview];
+        }
+        
+        self.detailViewController = detailViewController;
+        [self setupDetailView];
+    }
+    
+    if (completion) {completion();}
+}
+
 #pragma mark - Autorotate
 
 - (BOOL)shouldAutorotate

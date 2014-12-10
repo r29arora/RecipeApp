@@ -174,10 +174,18 @@
 		8FB0DD7B1A39069200F2935F /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				8FB0DD7F1A3908B200F2935F /* Base Navigation Controller */,
+			);
+			path = iPad;
+			sourceTree = "<group>";
+		};
+		8FB0DD7F1A3908B200F2935F /* Base Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
 				8FB0DD7C1A3906B900F2935F /* BaseNavigationController.h */,
 				8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */,
 			);
-			path = iPad;
+			name = "Base Navigation Controller";
 			sourceTree = "<group>";
 		};
 		8FFC01FF1A28C92000A73F2F /* Title */ = {
