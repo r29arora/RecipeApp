@@ -142,7 +142,7 @@
         NSMutableArray *currentSection = self.recipeObject.directions[x];
         for (NSUInteger y = 0; y < currentSection.count; y++)
         {
-            NSString *currentDirection = [NSString stringWithFormat:@"Step %lu: %@ \n" ,y+1,currentSection[y]];
+            NSString *currentDirection = [NSString stringWithFormat:@"Step %u: %@ \n" ,y+1,currentSection[y]];
             NSAttributedString *attributedDirection = [[NSAttributedString alloc] initWithString:currentDirection];
             [mutableAttributedString insertAttributedString:attributedDirection atIndex:[mutableAttributedString length]];
         }
