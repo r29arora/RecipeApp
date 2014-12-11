@@ -106,6 +106,7 @@
 }
 
 #pragma mark - Set up Base Navigation Controller
+
 - (void)setupBaseNavigationController
 {
     self.myRecipeViewController = [[MyRecipesViewController alloc] init];
@@ -121,23 +122,6 @@
     
     self.window.rootViewController = self.baseNavigationController;
     [self.window makeKeyAndVisible];
-}
-
-#pragma mark - BottomMenuControllerDelegate
-
-- (void)bottomMenuControllerDidOpenMenu
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Opened Menu");
-}
-
-- (void)bottomMenucontrollerDidCloseMenu
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Closed Menu");
-}
-
-- (void)bottomMenuControllerWillTransition
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Will Transition");
 }
 
 #pragma mark -CreateRecipeViewControllerDelegate
