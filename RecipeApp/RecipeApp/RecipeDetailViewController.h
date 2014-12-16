@@ -18,15 +18,18 @@
 @property (nonatomic, strong) UIScrollView *contentScrollView;
 
 // Title
+@property (nonatomic, strong) UIView *titleContainerView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UILabel *authorLabel;
 
 // Ingredients
+@property (nonatomic, strong) UIView *ingredientsContainerView;
 @property (nonatomic, strong) UILabel *ingredientsTitleLabel;
 @property (nonatomic, strong) TTTAttributedLabel *ingredientsLabel;
 
 // Directions
+@property (nonatomic, strong) UIView *directionsContainerView;
 @property (nonatomic, strong) UILabel *directionsTitleLabel;
 @property (nonatomic, strong) TTTAttributedLabel *directionsLabel;
 
