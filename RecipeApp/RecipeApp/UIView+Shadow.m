@@ -19,5 +19,4 @@
     self.layer.shadowOpacity = 0.5f;
     self.layer.shadowPath = shadowPath.CGPath;
 }
-
 @end

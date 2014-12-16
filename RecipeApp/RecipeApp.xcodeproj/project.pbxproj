@@ -13,10 +13,6 @@
 		8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F179EF31A25325A00F2B053 /* IngredientsSectionHeaderView.m */; };
 		8FB0DD731A38983A00F2935F /* NSAttributedString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD721A38983A00F2935F /* NSAttributedString+Utils.m */; };
 		8FB0DD771A389D2100F2935F /* NSAttributedString+CustomStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */; };
-		8FB0DD7E1A3906B900F2935F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */; };
-		8FB0DD831A3909E300F2935F /* MyRecipesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD821A3909E300F2935F /* MyRecipesViewController.m */; };
-		8FB0DD861A390A0200F2935F /* CreateRecipesViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD851A390A0200F2935F /* CreateRecipesViewController_iPad.m */; };
-		8FB0DD8B1A390BCF00F2935F /* SideNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD8A1A390BCF00F2935F /* SideNavigationViewController.m */; };
 		8FB0DD911A390DC400F2935F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0DD901A390DC400F2935F /* Utils.m */; };
 		8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA427D1A373D8E00A3A3D4 /* DirectionsHeaderView.m */; };
 		8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC12BE91A3643A000CD6B03 /* RecipeDetailViewController.m */; };
@@ -62,14 +58,6 @@
 		8FB0DD751A389D2100F2935F /* NSAttributedString+CustomStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+CustomStrings.h"; sourceTree = "<group>"; };
 		8FB0DD761A389D2100F2935F /* NSAttributedString+CustomStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+CustomStrings.m"; sourceTree = "<group>"; };
 		8FB0DD781A3904EE00F2935F /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		8FB0DD7C1A3906B900F2935F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
-		8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
-		8FB0DD811A3909E300F2935F /* MyRecipesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRecipesViewController.h; sourceTree = "<group>"; };
-		8FB0DD821A3909E300F2935F /* MyRecipesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRecipesViewController.m; sourceTree = "<group>"; };
-		8FB0DD841A390A0200F2935F /* CreateRecipesViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateRecipesViewController_iPad.h; sourceTree = "<group>"; };
-		8FB0DD851A390A0200F2935F /* CreateRecipesViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRecipesViewController_iPad.m; sourceTree = "<group>"; };
-		8FB0DD891A390BCF00F2935F /* SideNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideNavigationViewController.h; sourceTree = "<group>"; };
-		8FB0DD8A1A390BCF00F2935F /* SideNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideNavigationViewController.m; sourceTree = "<group>"; };
 		8FB0DD8F1A390DC400F2935F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		8FB0DD901A390DC400F2935F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		8FBA427C1A373D8E00A3A3D4 /* DirectionsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionsHeaderView.h; sourceTree = "<group>"; };
@@ -181,53 +169,6 @@
 				AAEF76EC1A1D6F8E005A92B1 /* BottomMenuController */,
 			);
 			path = iPhone;
-			sourceTree = "<group>";
-		};
-		8FB0DD7B1A39069200F2935F /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-				8FB0DD881A390BBE00F2935F /* Navigation */,
-				8FB0DD871A390A0C00F2935F /* Create Recipes */,
-				8FB0DD801A3909D100F2935F /* My Recipes View */,
-				8FB0DD7F1A3908B200F2935F /* Base Navigation Controller */,
-			);
-			path = iPad;
-			sourceTree = "<group>";
-		};
-		8FB0DD7F1A3908B200F2935F /* Base Navigation Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8FB0DD7C1A3906B900F2935F /* BaseNavigationController.h */,
-				8FB0DD7D1A3906B900F2935F /* BaseNavigationController.m */,
-			);
-			name = "Base Navigation Controller";
-			sourceTree = "<group>";
-		};
-		8FB0DD801A3909D100F2935F /* My Recipes View */ = {
-			isa = PBXGroup;
-			children = (
-				8FB0DD811A3909E300F2935F /* MyRecipesViewController.h */,
-				8FB0DD821A3909E300F2935F /* MyRecipesViewController.m */,
-			);
-			name = "My Recipes View";
-			sourceTree = "<group>";
-		};
-		8FB0DD871A390A0C00F2935F /* Create Recipes */ = {
-			isa = PBXGroup;
-			children = (
-				8FB0DD841A390A0200F2935F /* CreateRecipesViewController_iPad.h */,
-				8FB0DD851A390A0200F2935F /* CreateRecipesViewController_iPad.m */,
-			);
-			name = "Create Recipes";
-			sourceTree = "<group>";
-		};
-		8FB0DD881A390BBE00F2935F /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				8FB0DD891A390BCF00F2935F /* SideNavigationViewController.h */,
-				8FB0DD8A1A390BCF00F2935F /* SideNavigationViewController.m */,
-			);
-			name = Navigation;
 			sourceTree = "<group>";
 		};
 		8FB0DD8C1A390D9A00F2935F /* Utils */ = {
@@ -435,7 +376,6 @@
 		AAEF76E41A1D5A33005A92B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8FB0DD7B1A39069200F2935F /* iPad */,
 				8FB0DD7A1A3905B400F2935F /* iPhone */,
 			);
 			name = Controllers;
@@ -617,7 +557,6 @@
 				8F179EF11A25131C00F2B053 /* RATextField.m in Sources */,
 				AABF05011A1FFC6800A677A6 /* CreateIngredientsView.m in Sources */,
 				AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */,
-				8FB0DD8B1A390BCF00F2935F /* SideNavigationViewController.m in Sources */,
 				AA0C3EBE1A1EAA3100650ABA /* RecipeObject.m in Sources */,
 				AA7060301A1FEC4200944DB1 /* CreateTitleView.m in Sources */,
 				8F179EF41A25325A00F2B053 /* IngredientsSectionHeaderView.m in Sources */,
@@ -629,10 +568,7 @@
 				AAEF76EF1A1D6FAB005A92B1 /* MenuViewController.m in Sources */,
 				8FC12BEA1A3643A000CD6B03 /* RecipeDetailViewController.m in Sources */,
 				8FBA427E1A373D8E00A3A3D4 /* DirectionsHeaderView.m in Sources */,
-				8FB0DD831A3909E300F2935F /* MyRecipesViewController.m in Sources */,
 				8FFC02041A28C97A00A73F2F /* DirectionsTableViewCell.m in Sources */,
-				8FB0DD7E1A3906B900F2935F /* BaseNavigationController.m in Sources */,
-				8FB0DD861A390A0200F2935F /* CreateRecipesViewController_iPad.m in Sources */,
 				AAEF76F31A1D81E2005A92B1 /* MenuBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

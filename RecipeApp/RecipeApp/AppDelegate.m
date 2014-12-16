@@ -19,6 +19,7 @@
 #import "MyRecipesViewController.h"
 #import "SideNavigationViewController.h"
 #import "Utils.h"
+#import "MenuTableViewCell.h"
 
 @interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate, RecipeViewControllerDelegate>
 
@@ -28,13 +29,6 @@
 @property (nonatomic, strong) RecipeDetailViewController *detailViewController;
 @property (nonatomic, strong) RecipeViewController *mainViewController;
 @property (nonatomic, strong) CreateRecipeViewController *createRecipeViewController;
-
-// IPad View Controllers
-@property (nonatomic, strong) BaseNavigationController *baseNavigationController;
-@property (nonatomic, strong) MyRecipesViewController *myRecipeViewController;
-@property (nonatomic, strong) CreateRecipesViewController_iPad *createRecipeViewControllerIPad;
-@property (nonatomic, strong) SideNavigationViewController *sideNavigationController;
-
 @end
 
 @implementation AppDelegate
@@ -43,17 +37,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-
-    if ([Utils isIPad])
-    {
-        // Load New Menu view Controller
-        [self setupBaseNavigationController];
-    }
-    else
-    {
-        [self setupBottomMenuController];
-    }
+    [self setupBottomMenuController];
     
     return YES;
 }
@@ -102,25 +86,6 @@
     [self.bottomMenuController setupCenterView];
     
     self.window.rootViewController = self.bottomMenuController;
-    [self.window makeKeyAndVisible];
-}
-
-#pragma mark - Set up Base Navigation Controller
-
-- (void)setupBaseNavigationController
-{
-    self.myRecipeViewController = [[MyRecipesViewController alloc] init];
-    self.createRecipeViewControllerIPad = [[CreateRecipesViewController_iPad alloc] init];
-    self.sideNavigationController = [[SideNavigationViewController alloc] init];
-    
-    self.myRecipeViewController.view.frame = CGRectMake([Utils screenWidth]/3.0f, 0.0f, 2.0f*[Utils screenHeight]/3.0f, [Utils screenHeight]);
-    self.myRecipeViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.sideNavigationController.view.frame = CGRectMake(0.0f, 0.0f, [Utils screenWidth]/3.0f, [Utils screenHeight]);
-    self.sideNavigationController.view.autoresizingMask =UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.baseNavigationController = [[BaseNavigationController alloc] initWithDetailViewController:self.myRecipeViewController sideViewController:self.sideNavigationController];
-    [self.baseNavigationController setupViews];
-    
-    self.window.rootViewController = self.baseNavigationController;
     [self.window makeKeyAndVisible];
 }
 
