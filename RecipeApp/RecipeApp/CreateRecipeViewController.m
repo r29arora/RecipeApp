@@ -124,19 +124,19 @@
 
 - (void)saveCurrentRecipe
 {
-    RecipeObjectManager *recipeManager = [[RecipeObjectManager alloc] init];
+//    RecipeObjectManager *recipeManager = [[RecipeObjectManager alloc] init];
     
-    [recipeManager loadDataFromDisk];
+//    [recipeManager loadDataFromDisk];
+    
+    [self.currentRecipe loadDataFromDisk];
     
     // Load current recipe object
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
-    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
-    self.currentRecipe.directions = self.directionsView.directionSections;
+//    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
+//    self.currentRecipe.directions = self.directionsView.directionSections;
     
-    // Set Data Here
-    [recipeManager.recipeObjects addObject:self.currentRecipe];
-    [recipeManager saveDataToDisk];
+    [self.currentRecipe saveDataToDisk];
     
     // Send Message to Delegate
     [self.delegate createRecipeViewControllerDidFinishEditing];

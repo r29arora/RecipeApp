@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define kRecipeList @"Recipes.plist"
+
 @interface RecipeObject : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSMutableArray *ingredients;
-@property (nonatomic, strong) NSMutableArray *directions;
+
+- (void)saveDataToDisk;
+- (void)loadDataFromDisk;
 
 @end

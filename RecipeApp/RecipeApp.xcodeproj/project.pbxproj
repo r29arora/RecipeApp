@@ -20,6 +20,7 @@
 		AA71E9671A1E4A37005626A5 /* RecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9661A1E4A37005626A5 /* RecipeViewController.m */; };
 		AA71E96A1A1E503C005626A5 /* CreateRecipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */; };
 		AA71E96E1A1E756B005626A5 /* RecipeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA71E96D1A1E756B005626A5 /* RecipeCollectionViewCell.m */; };
+		AA9672061A35422A00395215 /* Recipes.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA9672051A35422A00395215 /* Recipes.plist */; };
 		AABF04FE1A1FF68E00A677A6 /* UIView+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */; };
 		AABF05011A1FFC6800A677A6 /* CreateIngredientsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABF05001A1FFC6800A677A6 /* CreateIngredientsView.m */; };
 		AAEF76C11A1D5A2B005A92B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF76C01A1D5A2B005A92B1 /* main.m */; };
@@ -67,6 +68,7 @@
 		AA71E9691A1E503C005626A5 /* CreateRecipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateRecipeViewController.m; sourceTree = "<group>"; };
 		AA71E96C1A1E756B005626A5 /* RecipeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeCollectionViewCell.h; sourceTree = "<group>"; };
 		AA71E96D1A1E756B005626A5 /* RecipeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipeCollectionViewCell.m; sourceTree = "<group>"; };
+		AA9672051A35422A00395215 /* Recipes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Recipes.plist; sourceTree = "<group>"; };
 		AABF04FC1A1FF68E00A677A6 /* UIView+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shadow.h"; sourceTree = "<group>"; };
 		AABF04FD1A1FF68E00A677A6 /* UIView+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shadow.m"; sourceTree = "<group>"; };
 		AABF04FF1A1FFC6800A677A6 /* CreateIngredientsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateIngredientsView.h; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				AAEF76BF1A1D5A2B005A92B1 /* Info.plist */,
 				AAEF76C01A1D5A2B005A92B1 /* main.m */,
+				AA9672051A35422A00395215 /* Recipes.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA9672061A35422A00395215 /* Recipes.plist in Resources */,
 				AAEF76CF1A1D5A2B005A92B1 /* LaunchScreen.xib in Resources */,
 				AAEF76CC1A1D5A2B005A92B1 /* Images.xcassets in Resources */,
 			);
