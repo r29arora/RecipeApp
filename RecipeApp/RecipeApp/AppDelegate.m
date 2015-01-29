@@ -12,17 +12,19 @@
 #import "RecipeViewController.h"
 #import "CreateRecipeViewController.h"
 #import "MenuBarView.h"
+#import "RecipeDetailViewController.h"
+#import "Constants.h"
+#import "Utils.h"
+#import "MenuTableViewCell.h"
 
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+@interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate, RecipeViewControllerDelegate>
 
-@interface AppDelegate () <BottomMenuControllerDelegate, CreateRecipeViewControllerDelegate, MenuViewControllerDelegate>
-
+// IPhone View Controllers
 @property (nonatomic, strong) BottomMenuController *bottomMenuController;
 @property (nonatomic, strong) MenuViewController *menuViewController;
+@property (nonatomic, strong) RecipeDetailViewController *detailViewController;
 @property (nonatomic, strong) RecipeViewController *mainViewController;
 @property (nonatomic, strong) CreateRecipeViewController *createRecipeViewController;
-
 @end
 
 @implementation AppDelegate
@@ -66,13 +68,16 @@
     self.mainViewController = [[RecipeViewController alloc] init];
     self.menuViewController = [[MenuViewController alloc] init];
     self.createRecipeViewController = [[CreateRecipeViewController alloc] init];
+    self.detailViewController = [[RecipeDetailViewController alloc] init];
     
     self.createRecipeViewController.delegate = self;
     self.menuViewController.delegate = self;
+    self.mainViewController.delegate = self;
     self.bottomMenuController.delegate = self;
     
-    self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    self.menuViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH , 100.0f);
+    self.mainViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
+    self.detailViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
+    self.menuViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth] , 100.0f);
     self.bottomMenuController = [[BottomMenuController alloc] initWithCenterViewController:self.mainViewController bottomViewController:self.menuViewController];
     [self.bottomMenuController setupCenterView];
     
@@ -80,30 +85,24 @@
     [self.window makeKeyAndVisible];
 }
 
-#pragma mark - BottomMenuControllerDelegate
-
-- (void)bottomMenuControllerDidOpenMenu
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Opened Menu");
-}
-
-- (void)bottomMenucontrollerDidCloseMenu
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Closed Menu");
-}
-
-- (void)bottomMenuControllerWillTransition
-{
-    NSLog(@"App Delegate: Bottom Menu Controller Will Transition");
-}
-
 #pragma mark -CreateRecipeViewControllerDelegate
 
 - (void)createRecipeViewControllerDidFinishEditing
 {
-    self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.mainViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
     [self.bottomMenuController setNewCenterViewController:self.mainViewController WithCompletion:nil];
     [self.mainViewController.recipeList reloadData];
+}
+
+#pragma mark - RecipeViewControllerDelegate
+- (void)recipeViewController:(RecipeViewController *)controller
+             didSelectRecipe:(RecipeObject *)recipe
+                 AtIndexPath:(NSIndexPath *)indexPath
+{
+    self.detailViewController = [[RecipeDetailViewController alloc] init];
+    self.detailViewController.recipeObject = recipe;
+    self.detailViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
+    [self.bottomMenuController setNewCenterViewController:self.detailViewController WithCompletion:nil];
 }
 
 #pragma mark - MenuViewControllerDelegate
@@ -114,13 +113,13 @@
     {
         self.createRecipeViewController = [[CreateRecipeViewController alloc] init];
         self.createRecipeViewController.delegate = self;
-        self.createRecipeViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        self.createRecipeViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
         [self.bottomMenuController setNewCenterViewController:self.createRecipeViewController WithCompletion:nil];
         return;
     }
     else if (indexPath.row == MenuTableViewTypeMyRecipes && ![self.bottomMenuController.centerViewController isKindOfClass:[RecipeViewController class]])
     {
-        self.mainViewController.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        self.mainViewController.view.frame = CGRectMake(0, 0, [Utils screenWidth], [Utils screenHeight]);
         [self.bottomMenuController setNewCenterViewController:self.mainViewController WithCompletion:nil];
         return;
     }

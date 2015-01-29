@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RecipeObjectManager.h"
+
+@class RecipeViewController;
+@class RecipeObject;
+
+@protocol RecipeViewControllerDelegate <NSObject>
+
+- (void)recipeViewController:(RecipeViewController *)controller
+             didSelectRecipe:(RecipeObject *)recipe
+                 AtIndexPath:(NSIndexPath *)indexPath;
+
+@end
 
 @interface RecipeViewController : UIViewController
 
 @property (nonatomic, strong) UICollectionView *recipeList;
-@property (nonatomic ,strong) RecipeObjectManager *recipeObjectManager;
-@property (nonatomic, strong) NSCoder *coder;
+@property (nonatomic, strong) id <RecipeViewControllerDelegate> delegate;
+
 @end

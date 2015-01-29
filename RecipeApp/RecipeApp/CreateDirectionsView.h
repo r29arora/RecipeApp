@@ -24,6 +24,7 @@
 @property (nonatomic, strong)UIButton *doneButton;
 @property (nonatomic, strong) id <CreateDirectionsViewDelegate> delegate;
 @property (nonatomic, readonly) NSMutableArray *directionSections;
+@property (nonatomic, readonly) NSMutableArray *directionSectionHeaders;
 
 - (instancetype)init;
 

@@ -8,8 +8,10 @@
 
 #import "CreateDirectionsView.h"
 #import "DirectionsTableViewCell.h"
+#import "DirectionsHeaderView.h"
+#import "RATextField.h"
 
-@interface CreateDirectionsView () <UITableViewDelegate, UITableViewDataSource, DirectionsTableViewCellDelegate>
+@interface CreateDirectionsView () <UITableViewDelegate, UITableViewDataSource, DirectionsTableViewCellDelegate, DirectionsHeaderViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *directionSections;
 @property (nonatomic, strong) NSMutableArray *directionSectionHeaders;
@@ -27,6 +29,7 @@
         self.directionsLabel.textColor = [UIColor lightGrayColor];
         self.directionsLabel.font = [UIFont systemFontOfSize:20.0f];
         self.directionsLabel.textAlignment = NSTextAlignmentCenter;
+        self.directionsLabel.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         [self addSubview:self.directionsLabel];
         
         self.separatorView = [[UIView alloc] init];
@@ -36,6 +39,7 @@
         self.directionsTableView = [[UITableView alloc] init];
         self.directionsTableView.delegate = self;
         self.directionsTableView.dataSource = self;
+        self.directionsTableView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         self.directionsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.directionsTableView.showsHorizontalScrollIndicator = NO;
         self.directionsTableView.showsVerticalScrollIndicator = NO;
@@ -54,10 +58,13 @@
         
         [self.directionSections addObject:directionSet];
         
+        [self.directionSectionHeaders addObject:@"Section Title"];
+        
         self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.doneButton setTitle:@"Done!" forState:UIControlStateNormal];
-        [self.doneButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        self.doneButton.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self.doneButton setTitleColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateNormal];
+        [self.doneButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
+        self.doneButton.backgroundColor = [UIColor colorWithRed:76.0f/255.0f green:217.0f/255.0f blue:100.0f/255.0f alpha:1.0f];
         [self.doneButton addTarget:self action:@selector(didFinishEditing:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.doneButton];
 
@@ -72,6 +79,7 @@
     self.separatorView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.directionsLabel.frame) + 5.0f , self.frame.size.width - 20.0f, 1.0f);
     self.directionsTableView.frame = CGRectMake(10.0f, CGRectGetMaxY(self.separatorView.frame) + 10.0f, self.frame.size.width - 20.0f, self.frame.size.height - CGRectGetMaxY(self.separatorView.frame) - 60.0f);
     self.doneButton.frame = CGRectMake(5.0f, CGRectGetMaxY(self.directionsTableView.frame) + 5.0f, self.frame.size.width - 10.0f, 40.0f);
+    self.doneButton.layer.cornerRadius = 2.0f;
 }
 
 #pragma mark - Actions
@@ -94,6 +102,7 @@
         cell = [[DirectionsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
+    cell.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     cell.indexPath = indexPath;
     cell.delegate = self;
     
@@ -147,6 +156,22 @@
     return 40.0f;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // Section Header Data
+    NSString *sectionTitle = self.directionSectionHeaders[section];
+    DirectionsHeaderView *directionsHeader = [[DirectionsHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40.0f) sectionNumber:section];
+    directionsHeader.delegate = self;
+    directionsHeader.textField.text = sectionTitle;
+    directionsHeader.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
+    return directionsHeader;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.0f;
+}
+
 #pragma mark - DirectionsTableViewCellDelegate
 
 - (void)directionsTableViewCell:(DirectionsTableViewCell *)cell didTapAddDirectionButtonAtIndexPath:(NSIndexPath *)indexPath
@@ -163,6 +188,7 @@
     //Add new Section
     NSMutableArray *newDirectionsArray = [[NSMutableArray alloc] init];
     [self.directionSections insertObject:newDirectionsArray atIndex:indexPath.section+1];
+    [self.directionSectionHeaders insertObject:@"New Section" atIndex:indexPath.section +1];
     [self.directionsTableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section+1] withRowAnimation:UITableViewRowAnimationBottom];
         [self.directionsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:newDirectionsArray.count+1 inSection:indexPath.section + 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
@@ -200,6 +226,25 @@
                 [self.directionsTableView endUpdates];
             }
         }
+    }
+}
+
+#pragma mark - DirectionsHeaderViewDelegate
+
+- (void)directionsHeaderView:(DirectionsHeaderView *)headerView didUpdateHeaderViewInSection:(NSUInteger)sectionNumber
+{
+    // Update array for headers
+    self.directionSectionHeaders[sectionNumber] = headerView.textField.text;
+}
+
+- (void)directionsHeaderView:(DirectionsHeaderView *)headerView didTapDeleteHeaderViewInSection:(NSUInteger)sectionNumber
+{
+    if (self.directionSectionHeaders.count > 1)
+    {
+        [self.directionSectionHeaders removeObjectAtIndex:sectionNumber];
+        [self.directionSections removeObjectAtIndex:sectionNumber];
+        [self.directionsTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionNumber] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.directionsTableView reloadData];
     }
 }
 

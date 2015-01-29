@@ -36,7 +36,7 @@
     self.directionTextView.bounces = NO;
     self.directionTextView.font = [UIFont systemFontOfSize:14.0f];
     self.directionTextView.scrollEnabled = NO;
-    self.directionTextView.backgroundColor = [UIColor whiteColor];
+    self.directionTextView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     self.directionTextView.layer.borderWidth = 0.5f;
     self.directionTextView.layer.borderColor = [[UIColor groupTableViewBackgroundColor] CGColor];
     [self addSubview:self.directionTextView];

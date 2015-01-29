@@ -10,6 +10,11 @@
 
 @interface MenuTableViewCell : UITableViewCell
 
+typedef enum {
+    MenuTableViewTypeNewRecipe = 0,
+    MenuTableViewTypeMyRecipes,
+}MenuTableViewType;
+
 @property (nonatomic, strong) UIImageView *sideImage;
 @property (nonatomic, strong) UILabel *titleLabel;
 

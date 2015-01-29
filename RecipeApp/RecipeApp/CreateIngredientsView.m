@@ -35,7 +35,7 @@
         [self addSubview:self.separatorView];
         
         self.ingredientsTableView = [[UITableView alloc] init];
-        self.ingredientsTableView.backgroundColor = [UIColor whiteColor];
+        self.ingredientsTableView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
         self.ingredientsTableView.showsHorizontalScrollIndicator = NO;
         self.ingredientsTableView.showsVerticalScrollIndicator = NO;
         self.ingredientsTableView.delegate = self;
@@ -154,7 +154,7 @@
     IngredientsSectionHeaderView *sectionHeaderView = [[IngredientsSectionHeaderView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40.0f) sectionNumber:section];
     sectionHeaderView.textField.text = sectionTitle;
     sectionHeaderView.delegate = self;
-    sectionHeaderView.backgroundColor = [UIColor whiteColor];
+    sectionHeaderView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
     return sectionHeaderView;
 }
 
@@ -235,6 +235,17 @@
 {
     // Update Section Headers array with appropriate content
     self.sectionHeaders[section] = headerView.textField.text;
+}
+
+- (void)ingredientsSectionHeaderView:(IngredientsSectionHeaderView *)headerView didDeleteHeaderViewInSection:(NSInteger)section
+{
+    if (self.sectionHeaders.count > 1)
+    {
+        [self.sectionHeaders removeObjectAtIndex:section];
+        [self.ingredientSections removeObjectAtIndex:section];
+        [self.ingredientsTableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationBottom];
+        [self.ingredientsTableView reloadData];
+    }
 }
 
 @end

@@ -9,7 +9,6 @@
 #import "CreateRecipeViewController.h"
 #import "BottomMenuController.h"
 #import "RecipeObject.h"
-#import "RecipeObjectManager.h"
 #import "CreateTitleView.h"
 #import "CreateIngredientsView.h"
 #import "UIView+Shadow.h"
@@ -27,7 +26,7 @@
     [super viewDidLoad];
     
     self.contentContainerView = [[UIScrollView alloc] init];
-    self.contentContainerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.contentContainerView.backgroundColor = [UIColor colorWithRed:52.0f/255.0f green:170.0f/255.0f blue:220.0f/255.0f alpha:0.8f];
     self.contentContainerView.pagingEnabled = YES;
     [self.view addSubview:self.contentContainerView];
     
@@ -36,7 +35,7 @@
     [self.contentContainerView addSubview:self.titleContainerView];
     
     self.titleView = [[CreateTitleView alloc] init];
-    self.titleView.backgroundColor = [UIColor whiteColor];
+    self.titleView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.titleContainerView addSubview:self.titleView];
     
     self.ingredientsContainerView = [[UIView alloc] init];
@@ -44,7 +43,7 @@
     [self.contentContainerView addSubview:self.ingredientsContainerView];
     
     self.ingredientsView = [[CreateIngredientsView alloc] init];
-    self.ingredientsView.backgroundColor = [UIColor whiteColor];
+    self.ingredientsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.ingredientsContainerView addSubview:self.ingredientsView];
     
     self.directionsContainerView = [[UIView alloc] init];
@@ -52,11 +51,13 @@
     [self.contentContainerView addSubview:self.directionsContainerView];
     
     self.directionsView = [[CreateDirectionsView alloc] init];
-    self.directionsView.backgroundColor = [UIColor whiteColor];
+    self.directionsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.directionsView.delegate = self;
     [self.directionsContainerView addSubview:self.directionsView];
     
     self.currentRecipe = [[RecipeObject alloc] init];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+
 }
 
 - (void)viewWillLayoutSubviews
@@ -99,8 +100,8 @@
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     BOOL valid = YES;
-    hud.color = [[UIColor groupTableViewBackgroundColor] colorWithAlphaComponent:0.8f];
-    hud.labelColor = [UIColor darkGrayColor];
+    hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    hud.labelColor = [UIColor groupTableViewBackgroundColor];
     hud.mode = MBProgressHUDModeText;
 
     // Title of Recipe
@@ -111,10 +112,22 @@
         valid = NO;
     }
     // Author of Recipe
-    if ([self.titleView.authorLabel.text isEqualToString:@""] ||
+    else if ([self.titleView.authorLabel.text isEqualToString:@""] ||
         [self.titleView.authorLabel.text isEqualToString:@"By:"])
     {
         hud.labelText = @"Enter an author name";
+        valid = NO;
+    }
+    else if (!self.ingredientsView.ingredientSections ||
+             !self.ingredientsView.sectionHeaders)
+    {
+        hud.labelText = @"Enter Ingredients";
+        valid = NO;
+    }
+    else if (!self.directionsView.directionSections ||
+             !self.directionsView.directionSectionHeaders)
+    {
+        hud.labelText = @"Enter Directions";
         valid = NO;
     }
     
@@ -124,15 +137,18 @@
 
 - (void)saveCurrentRecipe
 {
+<<<<<<< HEAD
 //    RecipeObjectManager *recipeManager = [[RecipeObjectManager alloc] init];
     
 //    [recipeManager loadDataFromDisk];
     
     [self.currentRecipe loadDataFromDisk];
+=======
+>>>>>>> 5acafb16478f22b9eb215a4e2021e236a165da1d
     
-    // Load current recipe object
     self.currentRecipe.title = self.titleView.titleLabel.text;
     self.currentRecipe.author = self.titleView.authorLabel.text;
+<<<<<<< HEAD
 //    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
 //    self.currentRecipe.directions = self.directionsView.directionSections;
     
@@ -140,6 +156,22 @@
     
     // Send Message to Delegate
     [self.delegate createRecipeViewControllerDidFinishEditing];
+=======
+    self.currentRecipe.ingredients = self.ingredientsView.ingredientSections;
+    self.currentRecipe.ingredientSections = self.ingredientsView.sectionHeaders;
+    self.currentRecipe.directions = self.directionsView.directionSections;
+    self.currentRecipe.directionSections = self.directionsView.directionSectionHeaders;
+    
+    [self.currentRecipe saveDataToDiskWithCompletion:^{
+        if ([self.delegate respondsToSelector:@selector(createRecipeViewControllerDidFinishEditing)])
+        {
+            [self.delegate createRecipeViewControllerDidFinishEditing];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:CreateViewControllerDidFinishEditingNotification object:nil];
+        
+    }];
+>>>>>>> 5acafb16478f22b9eb215a4e2021e236a165da1d
 }
 
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UITableView *ingredientsTableView;
 @property (nonatomic, readonly) NSMutableArray *ingredientSections;
+@property (nonatomic, readonly) NSMutableArray *sectionHeaders;
 
 - (instancetype)init;
 
